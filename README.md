@@ -3,16 +3,16 @@ A site for the purpose of making club and group management easier. With Club Hub
 
 Each role gets certain functionalities depending on their influence in the group. 
 
-#Roles:
+## Roles:
 Coach/Admin:
 Send notifications to users
 
-#Members:
+## Members:
 Find information about club dates
 Make payments to club
 Receive discounts based on 3 timely payments 
 
-#Treasurer: 
+## Treasurer: 
 View finances such as current revenues, expenses, and debts
 A log of previous finance information
 Automated payments to coaches
@@ -22,10 +22,10 @@ Keep track of profit margins for the group
 Can see who has and hasn’t paid for certain activities
 Add and remove people from the members list
 
-#How to run this program: 
+## How to run this program: 
 (Technologies not chosen yet, will be updated once frameworks and libraries are taken into consideration
 
-#Technologies Used:
+## Technologies Used:
 React
 NodeJS
 Express
