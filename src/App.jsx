@@ -1,11 +1,10 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './Navigation';
-import Home from './Home';
-import Finances from './Finances';
+import Home from './pages/Home';
+import Finances from './pages/Finances';
 import Communication from './Communication';
-import About from './About';
-import './App.css'
+import About from './pages/About';
 
 function App() {
   return (
