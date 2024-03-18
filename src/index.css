@@ -198,7 +198,7 @@
 
 /* End of Finances Page */
 
-/* Income Statement Page */
+/* Income Statement and debts Page */
 
 .income-statements {
   justify-content: center;
@@ -253,3 +253,5 @@
   display: flex;
   justify-content: center;
 }
+
+/* End of income statement and debts page */
