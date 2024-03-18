@@ -65,7 +65,7 @@ To run this application, you will need:
 
 1. Clone the repository using
 ```
-    git@github.com:KU-5H/ClubHub.git
+    git clone git@github.com:KU-5H/ClubHub.git
 ```
 
 2. Install dependencies using npm.
