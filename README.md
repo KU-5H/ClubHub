@@ -44,7 +44,7 @@
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
 [![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 
-- Used to give let the **```Coach```** / **```Treasurer```** / **```Member```**   access a visible and interactive website
+- Used to let the **```Coach```** / **```Treasurer```** / **```Member```**   access a visible and interactive website
 - React and Tailwind primarily make up what the user can see on the webpage
 
 
