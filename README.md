@@ -76,7 +76,7 @@ To run this application, you will need:
 
 ## Contributors
 - [Kush (@KU-5H)](https://github.com/KU-5H) 
-- [Brandom (@branliyan)](https://github.com/branliyan)
+- [Brandon (@branliyan)](https://github.com/branliyan)
 - [Lex (@lex-pan)](https://github.com/lex-pan)
 - [Nicholas (@Nickargiriou)](https://github.com/Nickargiriou)
 - [Jaysun (@JaysunS23)](https://github.com/JaysunS23)
