@@ -255,3 +255,42 @@
 }
 
 /* End of income statement and debts page */
+
+/* About page */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-category {
+  height: 72em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-section p {
+  font-size: 3em;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.blue {
+  background-color: rgb(74, 183, 255);
+}
+
+.blue p {
+  color: white;
+}
+
+.about-image {
+  width: 65%;
+}
+
+/* End of about page*/
