@@ -1,0 +1,296 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+  font-family: "Quicksand";
+}
+
+/* Nav Bar Area*/
+
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  margin: auto;
+  border-bottom: 1px solid rgb(196, 196, 196);
+}
+
+.nav-bar h1 {
+  color: white;
+  background-color: rgb(74, 183, 255);
+  border-radius: 50%;
+  border: 1px solid rgb(0, 153, 255);
+  padding: 6px;
+  width: 5em;
+  text-align: center;
+  font-size: 2.5em;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.nav-bar ul {
+  display: flex;
+  margin-left: 1em;
+  cursor: pointer;
+}
+
+.nav-bar li {
+  font-size: 22px;
+  padding: 1em;
+  border: 1px solid transparent;
+  list-style-type: none;
+}
+
+.nav-bar li:hover {
+  border: 1px solid #e4dcdc;
+}
+
+.nav-bar a {
+  color: black;
+}
+/* Nav Bar Area End */
+
+
+/* Home/Announcements Page */
+
+.announcements-page {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.pages-title {
+  font-size: 26px;
+  margin: 1em;
+}
+
+.announcement-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgb(172, 172, 172);
+  margin: 1em;
+  width: 60em;
+}
+
+.announcement-container p {
+  font-size: 24px;
+  border-bottom: 1px solid #e4dcdc;
+  margin: 0.7em;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.announcements-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.announcement-container-textarea {
+  font-size: 18px;
+  resize: none;
+  width: 90%;
+  padding: 0.7em;
+  margin-bottom: 2em;
+  min-height: 9em;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.add-announcement {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3.4em;
+  color: #e4dcdc;
+  border: 1px solid rgb(172, 172, 172);
+  border-radius: 100%;
+  width: 1em;
+  height: 1em; 
+  padding-bottom: 4px;
+  padding-right: 1px;
+}
+
+.add-announcement:hover {
+  background-color: rgb(74, 183, 255);
+  color: white;
+  cursor: pointer;
+}
+
+.announcement-container input {
+  font-size: 24px;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #e4dcdc;
+  margin: 0.7em;
+  text-align: center;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.announcement-options {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+}
+
+.announcement-option {
+  background: none;
+  border: 1px solid #e4dcdc;
+  font-size: 20px;
+  padding: 0.8em;
+  width: 20%;
+  margin: 1.5em;
+}
+
+.new-announcement-textarea {
+  font-size: 18px;
+  resize: none;
+  width: 90%;
+  padding: 0.7em;
+  min-height: 9em;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.cancel:hover {
+  background-color: rgb(248, 76, 76);
+  color: white;
+  cursor: pointer;
+}
+
+.submit:hover {
+  background-color: rgb(74, 183, 255);
+  color: white;
+  cursor: pointer;
+}
+/* End of Announcements page */
+
+/* Finances Page */
+
+.finances-categories {
+  display: flex;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.finances-categories a {
+  display: flex;
+  justify-content: center;
+  font-size: 22px;
+  color: black;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 0.5em;
+  width: 12em;
+  border: 1px solid #e4dcdc;
+}
+
+/* End of Finances Page */
+
+/* Income Statement and debts Page */
+
+.income-statements {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  display: grid;
+  left: 50%;
+  transform: translate(-50%, 0);
+  grid-template-columns: 55em;
+}
+
+.income-statement {
+  margin-top: 1em;
+  border: 1px solid #e4dcdc;
+  padding: 1em;
+}
+
+.income-statement-categories {
+  font-size: 2em;
+  border-bottom: 1px solid #e4dcdc;
+  margin: 0.8em;
+}
+
+.income-statement-item {
+  margin-left: 2em;
+  padding: 0.2em;
+  font-size: 22px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+.cost {
+  display: flex;
+  justify-content: center;
+}
+
+.income-statement-date {
+  margin-top: 1em;
+  display: flex;
+  justify-content: center;
+  font-size: 2em;
+}
+
+.debt-item {
+  padding: 0.2em;
+  font-size: 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.debt-item p {
+  display: flex;
+  justify-content: center;
+}
+
+/* End of income statement and debts page */
+
+/* About page */
+.about-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.about-category {
+  height: 72em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.about-section p {
+  font-size: 3em;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.blue {
+  background-color: rgb(74, 183, 255);
+}
+
+.blue p {
+  color: white;
+}
+
+.about-image {
+  width: 65%;
+}
+
+/* End of about page*/
