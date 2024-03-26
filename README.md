@@ -9,7 +9,7 @@ For us developers:
 3. Cd the backend folder and ```npm install express``` and ```npm install nodemon```
 4. Run the frontend with ```npm run dev``` (You have to be in the frontend folder)
 5. Run the backend with ```nodemon server.js``` (You have to be in the backend folder). 
-The backend will then run on ```http://localhost:3000/```, and the frontend will run on a available port
+The backend will then run on ```http://localhost:5000/```, and the frontend will run on a available port
 
 ## Features [![Features](https://img.shields.io/badge/Features-green)](https://github.com/KU-5H/ClubHub?tab=readme-ov-file#Features)
 ### 1. Custom Roles:
