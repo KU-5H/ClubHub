@@ -5,13 +5,17 @@ export default function Communication() {
   const [list, lists] = useState(['a','b','c','d'])
 
   function info() {
-    let update = list.map( n => <li key={n}>{n} </li>)
-    return update
+    if(Array.isArray(list)) {
+      let update = list.map( n => <li key={n}>{n} </li>)
+      return update
+    }
+    return list
   }
 
   function handleClick() {
-    fetch('/test')
+    fetch('api/test')
     .then(res => {
+      console.log(res)
       return res.json()
     }).then(val => {
       lists(val)
@@ -23,7 +27,7 @@ export default function Communication() {
       <h1>Home Page</h1>
       <p>Welcome to the Home Page</p>
       <ul>{info()}</ul>
-      <button onClick={handleClick()}>click me!</button>
+      <button onClick={handleClick}>click me!</button>
     </div>
   );
   }
