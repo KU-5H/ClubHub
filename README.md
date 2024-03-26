@@ -2,6 +2,11 @@
 # ClubHub
 **ClubHub is a platform designed to streamline club and group management, making it easier to handle finances, payments, and communications. With ClubHub, you can effortlessly track finances, send reminders, manage members, and analyze profit margins for your group or club.**
 
+## NOTICE
+Since this uses express backend, run the server using node backend/server.js 
+
+The site will then run on ```http://localhost:3000/```, so copy this link and run it there.
+
 ## Features [![Features](https://img.shields.io/badge/Features-green)](https://github.com/KU-5H/ClubHub?tab=readme-ov-file#Features)
 ### 1. Custom Roles:
 - Different roles in ClubHub give different access to members
