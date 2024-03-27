@@ -2,14 +2,21 @@
 # ClubHub
 **ClubHub is a platform designed to streamline club and group management, making it easier to handle finances, payments, and communications. With ClubHub, you can effortlessly track finances, send reminders, manage members, and analyze profit margins for your group or club.**
 
-## INSTALLATION
-For us developers:
-1. Clone the repo
-2. Cd the frontend folder and ```npm install vite```
-3. Cd the backend folder and ```npm install express``` and ```npm install nodemon```
+## Installation 
+### If NodeJS isn't installed:
+1. Install [NodeJS](https://nodejs.org/en/download)
+
+### If Git isn't installed:
+1. Install [Git](https://git-scm.com/)
+2. I reccomend you to read some sort of git basics to understand how to use the bash terminal
+
+### Regular Installation:
+1. Clone the repo with ```git clone```
+2. Make sure to ```npm install``` both the frontend and backend folders.
 4. Run the frontend with ```npm run dev``` (You have to be in the frontend folder)
 5. Run the backend with ```nodemon server.js``` (You have to be in the backend folder). 
 The backend will then run on ```http://localhost:5000/```, and the frontend will run on a available port
+
 
 ## Features [![Features](https://img.shields.io/badge/Features-green)](https://github.com/KU-5H/ClubHub?tab=readme-ov-file#Features)
 ### 1. Custom Roles:
