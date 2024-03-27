@@ -1,5 +1,5 @@
 
-# ClubHub
+# ClubHubs
 **ClubHub is a platform designed to streamline club and group management, making it easier to handle finances, payments, and communications. With ClubHub, you can effortlessly track finances, send reminders, manage members, and analyze profit margins for your group or club.**
 
 ## INSTALLATION
