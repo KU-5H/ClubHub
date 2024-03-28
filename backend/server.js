@@ -1,15 +1,16 @@
-require('dotenv').config();
-
 const express = require('express');
 const mongoose = require('mongoose');
+const dotenv = require('dotenv').config()
+
 const app = express();
 
-let tempV = "nahh hello"
-app.get('/test', (req, res) => {
-    res.json(tempV)
-})
+//middleware
+app.use(express.json())
+app.use('/', require('./routes/learnRoutes'))
+
+
 
 mongoose.connect(process.env.MONGOURL)
     .then(() => {
-        app.listen(process.env.PORT, () => console.log("Server is listening..."));
+        app.listen(process.env.PORT, () => console.log(`Server is listening on port ${process.env.PORT}`));
     })
