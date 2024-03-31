@@ -1,10 +1,14 @@
 import { useState, useContext} from "react";
 import {UserContext} from '../../context/userContext'
+import { Navigate } from "react-router-dom";
+import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from 'uuid';
 
 // Home page should be for announcements/updates
 
 function Home() {
+  const {user} = useContext(UserContext)
+
   //these announcements are hard coded, the real announcements will need to be retrieved from database 
   const [announcements, setAnnouncements] = useState([
     { title: 'Title 1', body: 'here is some text about the announcement and more' },
@@ -30,32 +34,35 @@ function Home() {
     cancelAnnouncement();
     setAnnouncements([{title: titleA, body: bodyA}, ...announcements]);
   }
-
-  const {user} = useContext(UserContext)
+  
 
   return (
-    <div className="announcements-page">
-      <div className="announcements-title">
-        <p className="pages-title">Announcements</p>
-        <p className='add-announcement' onClick={() => createAnnouncementDraft()}>+</p>
-      </div>
-      {newAnnouncement.map(announcement => (
-        <form method="post" onSubmit={(e) => updateAnnouncements(e)} key={uuidv4()} className="announcement-container">
-          <input type="text" />
-          <textarea className="new-announcement-textarea"/>
-          <div className="announcement-options">
-            <button className="announcement-option cancel">Cancel</button>
-            <button type="submit" className="announcement-option submit">Submit</button>
-          </div>
-        </form>
-      ))}
-      {announcements.map(announcement => (
-        <div key={uuidv4()} className="announcement-container">
-          <p>{announcement.title}</p>
-          <textarea className="announcement-container-textarea" value={announcement.body} readOnly />
+    <div>
+      {!!user ? (<div className="announcements-page">
+        <div className="announcements-title">
+          <p className="pages-title">Announcements</p>
+          {user.role === 'Admin' && (<p className='add-announcement' onClick={() => createAnnouncementDraft()}>+</p>)}
         </div>
+        {newAnnouncement.map(announcement => (
+          <form method="post" onSubmit={(e) => updateAnnouncements(e)} key={uuidv4()} className="announcement-container">
+            <input type="text" />
+            <textarea className="new-announcement-textarea"/>
+            <div className="announcement-options">
+              <button className="announcement-option cancel">Cancel</button>
+              <button type="submit" className="announcement-option submit">Submit</button>
+            </div>
+          </form>
+        ))}
+        {announcements.map(announcement => (
+          <div key={uuidv4()} className="announcement-container">
+            <p>{announcement.title}</p>
+            <textarea className="announcement-container-textarea" value={announcement.body} readOnly />
+          </div>
       ))}
-      </div>
+      </div>) : (
+        <Navigate to='/login' replace={true}/>
+      )}
+    </div>
   );
 }
   

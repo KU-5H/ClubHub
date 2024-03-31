@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const Announcement = require('../models/announcements')
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
 
@@ -8,7 +9,7 @@ const test = (req, res) => {
 
 const registerUser = async (req, res) => {
     try {
-        const {name, email, password} = req.body;
+        const {name, email, password, role} = req.body;
 
         if(!name) {
             return res.json({
@@ -22,6 +23,12 @@ const registerUser = async (req, res) => {
             })
         };
 
+        if(!role) {
+            return res.json({
+                error: 'Role is required'
+            })
+        }
+
         const exist = await User.findOne({email})
         if(exist) {
             return res.json({
@@ -31,7 +38,7 @@ const registerUser = async (req, res) => {
 
         const hashedPassword = await hashPassword(password)
         const user = await User.create({
-            name, email, password: hashedPassword
+            name, email, password: hashedPassword, role
         })
 
         return res.json(user)
@@ -54,7 +61,7 @@ const loginUser = async (req, res) => {
 
         const matchedPassword = await comparePassword(password, user.password)
         if(matchedPassword) {
-            jwt.sign({email: user.email, id: user._id, name: user.name}, process.env.JWT_SECRET, {}, (error, token) => {
+            jwt.sign({email: user.email, id: user._id, name: user.name, role: user.role}, process.env.JWT_SECRET, {}, (error, token) => {
                 if(error) throw error
                 res.cookie('token', token).json(user)
             })

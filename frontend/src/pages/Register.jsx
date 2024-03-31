@@ -10,16 +10,18 @@ export default function Register() {
         name: '',
         email: '',
         password: '',
+        role: '',
     })
 
     const handleRegister = async (e) => {
         e.preventDefault();
 
-        const {name, email, password} = data;
+        const {name, email, password, role} = data;
         try {
             const {data} = await axios.post('/register', {
-                name, email, password
+                name, email, password, role
             })
+
             if(data.error) {
                 toast.error(data.error)
             } else {
@@ -30,9 +32,16 @@ export default function Register() {
         } catch (error) {
             console.log(error)
         }
-
-
     }
+
+    const toastNoti = (role) => {
+        toast(
+            `${role} selected!`,
+            {duration: 5000}
+        )
+    }
+
+
 
     return (
         <div>
@@ -43,6 +52,12 @@ export default function Register() {
             <input type="email" placeholder='enter email...' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
             <label>Password</label>
             <input type="password" placeholder='enter password...' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
+            <div className='role'>
+                <h1>Roles</h1>
+                <button type='button' onClick={function(e){setData({...data, role: "Member"}); toastNoti("Member")}}>Member</button>
+                <button type='button' onClick={function(e){setData({...data, role: "Treasurer"}); toastNoti("Treasurer")}}>Treasurer</button>
+                <button type='button' onClick={function(e){setData({...data, role: "Admin"}); toastNoti("Admin")}}>Admin</button>
+            </div>
             <button type='submit'>Register</button>
         </form>
         </div>
