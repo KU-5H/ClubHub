@@ -19,14 +19,12 @@ export default function Login() {
                 email,
                 password
             });
-
-            console.log(email)
-            console.log(password)
             
             if(data.error) {
                 toast.error(data.error)
             } else {
                 setData({});
+                toast.success('Login Successful - Welcome to ClubHub!')
                 navigate('/');
             }
         } catch (error) {

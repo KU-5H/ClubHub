@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useContext} from "react";
+import {UserContext} from '../../context/userContext'
 import { v4 as uuidv4 } from 'uuid';
 
 // Home page should be for announcements/updates
@@ -29,6 +30,8 @@ function Home() {
     cancelAnnouncement();
     setAnnouncements([{title: titleA, body: bodyA}, ...announcements]);
   }
+
+  const {user} = useContext(UserContext)
 
   return (
     <div className="announcements-page">
