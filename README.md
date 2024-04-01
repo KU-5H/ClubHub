@@ -28,6 +28,12 @@ The backend will then run on ```http://localhost:5000/```, and the frontend will
 - Install [Mongoose](https://mongoosejs.com/docs/)
 - Use Nodemon to run the server to check for problems
 
+### DotENV:
+- You will need a .env file in the database to store some things, as highlighted earlier
+1. Add a port number with variable ```PORT``` and set it to ```5000``` as said earlier
+2. Add a ```MONGO_URL``` with your specific database url
+3. Create a variable called ```JWT_SECRET``` and set it to any number of string and characters you want
+
 ## Features [![Features](https://img.shields.io/badge/Features-green)](https://github.com/KU-5H/ClubHub?tab=readme-ov-file#Features)
 ### 1. Custom Roles:
 - Different roles in ClubHub give different access to members
