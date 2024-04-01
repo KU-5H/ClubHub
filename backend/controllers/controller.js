@@ -87,9 +87,44 @@ const getProfile = (req, res) => {
     }
 }
 
+const addAnnouncement = async (req, res) => {
+    const {title, text} = req.body;
+
+    try {
+        if (!title) {
+            return res.json({
+                error: "Title Needed!"
+            })
+        }
+        if (!text)  {
+            return res.json({
+                error: "Announcement text needed!"
+            })
+        }
+        const announcement = await Announcement.create({
+            title, text
+        })
+
+        return res.json(announcement)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getAnnouncement = async (req, res) => {
+    try {
+        const data = await Announcement.find({})
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     test,
     registerUser,
     loginUser,
     getProfile,
+    addAnnouncement,
+    getAnnouncement
 }

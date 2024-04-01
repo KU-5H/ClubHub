@@ -3,7 +3,7 @@ const {Schema} = mongoose;
 
 const announceSchema = new Schema({
     title: String,
-    body: String  
+    text: String  
 })
 
 const announceModel = mongoose.model('Announcement', announceSchema)
