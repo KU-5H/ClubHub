@@ -36,13 +36,13 @@ export default function Login() {
             <form className="login-bar" onSubmit={handleLogin}>
                 <label>Email</label>
                 <div></div>
-                <input class="login-enter-area" type="email" placeholder='Enter email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+                <input className="login-enter-area" type="email" placeholder='Enter email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
                 <div></div>
                 <label>Password</label>
                 <div></div>
-                <input class="login-enter-area" type="password" placeholder='Enter Password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
+                <input className="login-enter-area" type="password" placeholder='Enter Password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
                 <div></div>
-                <button class="login-submit" type='submit'>Login</button>
+                <button className="login-submit" type='submit'>Login</button>
             </form>
             </center>
         </div>
