@@ -1,15 +1,21 @@
 import React from 'react';
 import axios from 'axios';
-import { useState } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../../context/userContext'
 
 export default function Login() {
+    const {user} = useContext(UserContext);
     const navigate = useNavigate();
     const [data, setData] = useState({
         email: '',
         password: '',
     })
+
+    if(user) {
+        navigate('/')
+    }
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -25,7 +31,7 @@ export default function Login() {
             } else {
                 setData({});
                 toast.success('Login Successful - Welcome to ClubHub!')
-                navigate('/');
+                window.location.reload();
             }
         } catch (error) {
             console.log(error)

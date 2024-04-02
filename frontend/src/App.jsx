@@ -7,6 +7,7 @@ import Communication from './Communication';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Logout from './pages/Logout'
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
@@ -26,6 +27,7 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
+        <Route path='/logout' element={<Logout />}></Route>
       </Routes>
     </UserContextProvider>
   )

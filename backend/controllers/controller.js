@@ -75,6 +75,11 @@ const loginUser = async (req, res) => {
     }
 }
 
+const logoutUser =  (req, res) => {
+    res.clearCookie('token');
+    res.end()
+}
+
 const getProfile = (req, res) => {
     const {token} = req.cookies
     if(token) {
@@ -126,5 +131,6 @@ module.exports = {
     loginUser,
     getProfile,
     addAnnouncement,
-    getAnnouncement
+    getAnnouncement,
+    logoutUser,
 }

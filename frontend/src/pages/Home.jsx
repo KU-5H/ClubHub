@@ -37,9 +37,7 @@ function Home() {
     if(showForm) {
         const {title, text} = data
       try {
-        const {data} = await axios.post('/announcement', {
-          title, text
-        })
+        const {data} = await axios.post('/announcement', { title, text})
         if (data.error) {
           toast.error(data.error)
         } else {
