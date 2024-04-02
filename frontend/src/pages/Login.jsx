@@ -6,16 +6,18 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext'
 
 export default function Login() {
-    const {user} = useContext(UserContext);
+    const {user} = useContext(UserContext)
     const navigate = useNavigate();
     const [data, setData] = useState({
         email: '',
         password: '',
     })
 
-    if(user) {
-        navigate('/')
-    }
+    useEffect(() => {
+        if(user) {
+            navigate('/')
+        }
+    })
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -30,13 +32,14 @@ export default function Login() {
                 toast.error(data.error)
             } else {
                 setData({});
-                toast.success('Login Successful - Welcome to ClubHub!')
-                window.location.reload();
+                toast.success('Login Successful - Welcome to ClubHub! Refreshing Page...')
+                window.location.reload()
             }
         } catch (error) {
             console.log(error)
         }
     }
+    
 
     return (
         <div>

@@ -118,7 +118,7 @@ const addAnnouncement = async (req, res) => {
 
 const getAnnouncement = async (req, res) => {
     try {
-        const data = await Announcement.find({})
+        const data = await Announcement.find({});
         res.json(data)
     } catch (error) {
         console.log(error)

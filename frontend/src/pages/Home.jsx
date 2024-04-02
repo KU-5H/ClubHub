@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect, useRef} from "react";
 import {UserContext} from '../../context/userContext'
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
@@ -12,16 +12,24 @@ function Home() {
 
   //these announcements are hard coded, the real announcements will need to be retrieved from database 
   const [announcements, setAnnouncements] = useState([
-    { title: 'Title 1', body: 'here is some text about the announcement and more' },
-    { title: 'Title 2', body: 'here is some text about the announcement' },
-    { title: 'Title 3', body: 'here is some text about the announcement' }
   ]);
   const [data, setData] = useState({
     title: '',
     text: '',
   })
   const [showForm, setShowForm] = useState(false);
-  const [newAnnouncement, setNewAnnouncement] = useState([]);
+
+  useEffect(() => {
+    const showData = async () => {
+      const {data} = await axios.get('/announcementget')
+      setAnnouncements(prevAnnouncements => [
+        ...prevAnnouncements,
+        ...data.map(item => ({ title: item.title, body: item.text })), 
+      ]);
+    }
+    showData()
+  }, [])
+
 
   function createAnnouncementDraft() {
     setShowForm(true);
@@ -78,7 +86,8 @@ function Home() {
             <p>{announcement.title}</p>
             <textarea className="announcement-container-textarea" value={announcement.body} readOnly />
           </div>
-      ))}
+        ))}
+        <div>Hello {user.name}!</div>
       </div>) : (
         <Navigate to='/login' replace={true}/>
       )}

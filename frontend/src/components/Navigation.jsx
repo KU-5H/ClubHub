@@ -1,13 +1,17 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import {UserContext} from '../../context/userContext'
+import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
-  const handleLogout = () => {
-    axios.get('/logout')
+  const nav = useNavigate()
+  const handleLogout = async () => {
+    await axios.get('/logout')
     window.location.reload();
   }
+
+
   const {user} = useContext(UserContext)
 
     return (
@@ -18,9 +22,9 @@ export default function Navigation() {
           <Link to="/about"><li>About</li></Link>
           <Link to="/communication"><li>Communication</li></Link>
           <Link to="/finances"><li>Finances</li></Link>
-          <Link to="/login"><li>Login</li></Link>
-          <Link to="/register"><li>Register</li></Link>
-          <Link to="/logout" onClick={handleLogout}><li>Logout</li></Link>
+          <Link to="/login">{!user && (<li>Login</li>)}</Link>
+          <Link to="/register">{!user && (<li>Register</li>)}</Link>
+          <Link to="/logout" onClick={handleLogout}>{user && (<li>Logout</li>)}</Link>
         </ul>
     </nav>
     );
