@@ -24,10 +24,10 @@ function App() {
       <Navbar />
       <Toaster position='bottom-right' toastOptions={{duration: 2000}}/> 
       <Routes>
-        <Route path='/' element={ <Home />} />
+        <Route path='/' element={ <About />} />
         <Route path='/finances//*' element={<Finances />} />
         <Route path='/communication' element={<Communication />} />
-        <Route path='/about' element={<About />} />
+        <Route path='/home' element={<Home />} />
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
         <Route path='/logout' element={<Logout />}></Route>

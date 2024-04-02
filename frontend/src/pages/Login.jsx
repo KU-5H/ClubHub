@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../context/userContext'
 
 export default function Login() {
-    const {user} = useContext(UserContext)
+    const {user, login} = useContext(UserContext)
     const navigate = useNavigate();
     const [data, setData] = useState({
         email: '',
@@ -15,26 +15,15 @@ export default function Login() {
 
     useEffect(() => {
         if(user) {
-            navigate('/')
+            navigate('/home')
         }
-    })
+    }, [])
 
     const handleLogin = async (e) => {
         e.preventDefault()
         const {email, password} = data
         try {
-            const {data} = await axios.post('/login', {
-                email,
-                password
-            });
-            
-            if(data.error) {
-                toast.error(data.error)
-            } else {
-                setData({});
-                toast.success('Login Successful - Welcome to ClubHub! Refreshing Page...')
-                window.location.reload()
-            }
+            login(email, password)
         } catch (error) {
             console.log(error)
         }

@@ -75,7 +75,7 @@ const loginUser = async (req, res) => {
     }
 }
 
-const logoutUser =  (req, res) => {
+const logoutUser = (req, res) => {
     res.clearCookie('token');
     res.end()
 }

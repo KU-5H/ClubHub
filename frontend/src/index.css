@@ -281,6 +281,17 @@
   margin-bottom: 1em;
 }
 
+.about-category div {
+  font-size: 3em;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+
+
 .blue {
   background-color: rgb(74, 183, 255);
 }

@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect, useRef} from "react";
 import {UserContext} from '../../context/userContext'
-import { Navigate, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from 'uuid';
 // Home page should be for announcements/updates
 
 function Home() {
-  const {user} = useContext(UserContext)
+  const {user, role} = useContext(UserContext)
 
   //these announcements are hard coded, the real announcements will need to be retrieved from database 
   const [announcements, setAnnouncements] = useState([
@@ -87,9 +87,11 @@ function Home() {
             <textarea className="announcement-container-textarea" value={announcement.body} readOnly />
           </div>
         ))}
-        <div>Hello {user.name}!</div>
       </div>) : (
-        <Navigate to='/login' replace={true}/>
+        <div>
+          <div>Unauthorized!</div>
+          <div>You are not authorized to see this page. Please <Link to={'/Login'}>Login</Link> First</div>
+        </div>
       )}
     </div>
   );

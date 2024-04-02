@@ -3,12 +3,40 @@
 
 import location from './../assets/location.png';
 import schedule from './../assets/schedule.png';
+import { Link, useNavigate } from 'react-router-dom';
+import { useContext, useEffect } from 'react';
+import {UserContext} from '../../context/userContext'
 
 export default function About() {
+  const {user} = useContext(UserContext)
+  const navigate = useNavigate()
+  useEffect(() => {
+    if(user) {
+      navigate('/home')
+    }
+  })
+
+  const login = () => {
+    navigate('/login')
+  }
+
+  const register = () => {
+    navigate('/register')
+  }
+
     return (
       <div className="about-section">
         <div className="about-category blue">
-          <p>It's clubbin time!!! And then clubhub clubbed all over the place. Hope you enjoy! 😘</p>
+          <p>Welcome to ClubHub! 🥳<br />
+            <br />
+            The one and only club managment site you will ever need! <br />
+            <br />
+            You can get started by registering or logging in. <br />
+            </p>
+            <div>
+              <button onClick={login}>Login</button>
+              <button onClick={register}>Register</button>
+            </div>
         </div>
         <div className="about-category">
           <p>Practices on Wednesday from 4:00pm to 6:00pm and Fridays from 6:00pm to 8:00pm</p>
@@ -19,7 +47,7 @@ export default function About() {
           <img className='about-image' src={location}/>
         </div>
         <div className="about-category">
-          <p>To contact, call 666 666 6666 or email us at clubbinRUs@clubbin.com</p>
+          <p>To contact us, send an email to us at clubbinRUs@clubbin.com</p>
         </div>
       </div>
     );
