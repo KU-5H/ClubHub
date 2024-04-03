@@ -259,6 +259,7 @@
 /* End of income statement and debts page */
 
 /* About page */
+
 .about-section {
   display: flex;
   flex-direction: column;
@@ -306,6 +307,43 @@
   width: 65%;
 }
 
+button {
+  font-size: 0.9em;
+  padding: 0.7em;
+  margin-top: 1.2em;
+  border: 1px solid #e4dcdc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 20px;
+
+}
+
+button:hover {
+  background-color: rgb(243, 212, 183);
+  color: white;
+}
+
+button:active {
+  background-color: rgb(74, 183, 255);
+  color: white;
+}
+
+.about-section button {
+  margin-left: 1em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* End of about page*/
 
 /* Login Page */
@@ -352,3 +390,90 @@
   font-family: 'Poppins';
   cursor: pointer;
 }
+
+/* end of login page */
+
+/* Register Page */
+
+
+
+.register-page {
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  background-color: #d7effe;
+  height: 88.88vh;
+  padding-top: 20px; 
+}
+
+
+
+.register-enter-area {
+  width: 500px;
+  display:block;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  padding: 10px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 20px;
+  font-family: 'Poppins';
+  border-color: black;
+}
+
+
+h1 {
+  text-align: center;
+  font-size: 25px;
+  font-family: 'Poppins', sans-serif;
+    
+}
+
+
+.register-page button {
+  margin-left: 3.4em;
+  border-radius: 10px;
+  border-color: black;
+  
+}
+
+.Register-button {
+  width: 135px;
+  height: 70px;
+  font-size: 25px;
+  background-color: rgb(74, 183, 255);
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  margin-top: 2em; 
+  position:relative;
+  left: 4em;
+ 
+}
+
+
+
+.role-button{
+  width: 100px;
+  height: 40px;
+  font-size: 15px;
+  font-family: 'Poppins';
+  cursor: pointer;
+}
+
+
+/* End of Register Page */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
