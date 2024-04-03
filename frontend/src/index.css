@@ -387,11 +387,6 @@ body{
   padding: 20px;
 }
 
-button:hover {
-  background-color: rgb(243, 212, 183);
-  color: white;
-}
-
 button:active {
   background-color: rgb(74, 183, 255);
   color: white;
@@ -551,6 +546,10 @@ button:active {
   border:none;
   font-family: 'Poppins';
   cursor: pointer;
+}
+
+.selected {
+  background-color: rgb(74, 183, 255);
 }
 
 
