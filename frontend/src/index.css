@@ -463,6 +463,47 @@ h1 {
 
 /* End of Register Page */
 
+/* 
+Adding style to the unauthorized page in Home.jsx
+*/
+
+.unauthorized-container {
+  background-color: #d7effe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Minimum height to take up the full viewport height */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  position: relative; 
+}
+
+.unauthorized-message {
+  font-weight: bold;
+  font-size: 50px; /* Adjust the size as needed */
+  color: #D8000C; /* Adjust the color as needed */
+  margin-bottom: 20px; /* Spacing between this message and the next */
+}
+
+.message{
+  font-size: 20px;
+  margin-bottom: 20px;
+  color:#D8000C
+
+}
+
+.unauthorized-container a {
+  color: #1a0dab; /* Typically hyperlink blue */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.unauthorized-container a:hover {
+  text-decoration: underline; /* Adds underline on hover for better UX */
+}
+
+
+
 
 
 

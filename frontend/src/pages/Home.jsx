@@ -88,9 +88,9 @@ function Home() {
           </div>
         ))}
       </div>) : (
-        <div>
-          <div>Unauthorized!</div>
-          <div>You are not authorized to see this page. Please <Link to={'/Login'}>Login</Link> First</div>
+        <div className="unauthorized-container">
+          <div className="unauthorized-message"> Unauthorized!</div>
+          <div className="message">You are not authorized to see this page. Please <Link to={'/Login'}>Login</Link> First</div>
         </div>
       )}
     </div>
