@@ -44,22 +44,28 @@ export default function Register() {
 
 
     return (
-        <div>
-        <form onSubmit={handleRegister}>
+        <div className='register-page'>
+        <form  onSubmit={handleRegister}>
+            
             <label>Name</label>
-            <input type="text" placeholder='enter name...' value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
+            <div> </div>
+            <input className='register-enter-area' type="text" placeholder='enter name' value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
+            <div> </div>
             <label>Email</label>
-            <input type="email" placeholder='enter email...' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+            <input className='register-enter-area' type="email" placeholder='enter email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+            <div> </div>
             <label>Password</label>
-            <input type="password" placeholder='enter password...' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
-            <div className='role'>
+            <input className='register-enter-area' type="password" placeholder='enter password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
+            <div className='roles-container'>
                 <h1>Roles</h1>
-                <button type='button' onClick={function(e){setData({...data, role: "Member"}); toastNoti("Member")}}>Member</button>
-                <button type='button' onClick={function(e){setData({...data, role: "Treasurer"}); toastNoti("Treasurer")}}>Treasurer</button>
-                <button type='button' onClick={function(e){setData({...data, role: "Admin"}); toastNoti("Admin")}}>Admin</button>
+                <button type='button' className='role-button' onClick={function(e){setData({...data, role: "Member"}); toastNoti("Member")}}>Member</button>
+                <button type='button' className='role-button' onClick={function(e){setData({...data, role: "Treasurer"}); toastNoti("Treasurer")}}>Treasurer</button>
+                <button type='button' className='role-button' onClick={function(e){setData({...data, role: "Admin"}); toastNoti("Admin")}}>Admin</button>
             </div>
-            <button type='submit'>Register</button>
+            
+                <button type='submit' className='Register-button'>Register</button>
+            
         </form>
-        </div>
+        </div>  
     )
 }
