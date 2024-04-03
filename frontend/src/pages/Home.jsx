@@ -4,6 +4,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
+import useAnnouncementForm from '../components/AnnouncementForm'
 
 // Home page should be for announcements/updates
 
@@ -24,7 +25,7 @@ function Home() {
       const {data} = await axios.get('/announcementget')
       setAnnouncements(prevAnnouncements => [
         ...prevAnnouncements,
-        ...data.map(item => ({ title: item.title, body: item.text })), 
+        ...data.reverse().map(item => ({ title: item.title, body: item.text })), 
       ]);
     }
     showData()
@@ -59,8 +60,10 @@ function Home() {
     }
   }
 
+
+
   return (
-    
+
     <div>
       {user ? (<div className="announcements-page">
         <div className="announcements-title">

@@ -311,16 +311,13 @@
 /* Login Page */
 .login-page{
   display: flex;
-  background-color: #d7effe;
-  margin-top: 0;
-  margin-left: 0;   
-  height: 88.88vh;
+  background-color: #d7effe;   
+  height: 88.8888888vh;
   justify-content: center;
-
 }
 
 .login-bar{
-  margin-top: 150px;
+  margin-top: 100px;
   width: 10em;
   border-radius: 15px;
   background-color: white;
