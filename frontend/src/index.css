@@ -8,17 +8,23 @@
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  font-family: "Poppins"
+  font-family: "Poppins";
+
+}
+
+body{
+  background-color: #d7effe;   
 }
 
 /* Nav Bar Area*/
 
 .nav-bar {
+  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: space-evenly;
   margin: auto;
+  padding: 5px;
   border-bottom: 1px solid rgb(196, 196, 196);
 }
 
@@ -65,6 +71,7 @@
 /* Home/Announcements Page */
 
 .announcements-page {
+  background-color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -76,6 +83,7 @@
 }
 
 .announcement-container {
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -179,6 +187,8 @@
 /* End of Announcements page */
 
 /* Finances Page */
+
+.finances 
 
 .finances-categories {
   display: flex;
@@ -307,15 +317,21 @@
   width: 65%;
 }
 
-button {
-  font-size: 0.9em;
-  padding: 0.7em;
-  margin-top: 1.2em;
-  border: 1px solid #e4dcdc;
-  background-color: white;
-  cursor: pointer;
-  border-radius: 20px;
+.about-buttons {
+  display: flex;
+  width: 100%;
+}
 
+.about-button {
+  width: 100%;
+  height: 150px;
+  font-size: 15px;
+  background-color: #d7effe;
+  border-radius: 10px;
+  border-color: #0e1011;
+  cursor: pointer;
+  font-size: 50px;
+  padding: 20px;
 }
 
 button:hover {
@@ -350,38 +366,51 @@ button:active {
 .login-page{
   display: flex;
   background-color: #d7effe;   
-  height: 88.8888888vh;
   justify-content: center;
 }
 
 .login-bar{
-  margin-top: 100px;
-  width: 10em;
-  border-radius: 15px;
+  margin-top: 10vh;
+  width: 500px;
+  height: 350px;
+  border-radius: 10px;
   background-color: white;
-  text-align: center;
+  text-align: left;
+  padding: 3vh;
   font-family: 'Poppins', sans-serif;
-  font-size: 50px; 
-  padding-bottom: 30px;
+  font-size: 14px; 
+}
+
+.login-title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
 }
 
 .login-enter-area{
-  
-  margin-top: 0px;
-  padding: 10px 15px;
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 9px;
   font-family: 'Poppins';
   border-color: black;
+  border-width: 1px;
 }
 
 .login-submit{
-  width: 100px;
+  width: 100%;
   height: 40px;
   margin-top: 29px;
   font-size: 15px;
-  background-color: #FFD4B2;
+  background-color: rgb(74, 183, 255);
   border-radius: 10px;
   border:none;
   font-family: 'Poppins';
@@ -391,71 +420,103 @@ button:active {
 /* end of login page */
 
 /* Register Page */
-
+.register-title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
 
 
 .register-page {
   display: flex;
-  flex-direction: column; 
-  align-items: center; 
-  background-color: #d7effe;
-  height: 88.88vh;
-  padding-top: 20px; 
+  justify-content: center;
 }
 
+.register-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  width: 500px;
+  height: 55vh;
+  border-radius: 10px;
+  background-color: white;
+  text-align: left;
+  padding: 3vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px; 
+}
 
+.register-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
 
 .register-enter-area {
-  width: 500px;
-  display:block;
-  margin-top: 10px;
-  margin-bottom: 15px;
-  padding: 10px 30px;
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 9px;
   font-family: 'Poppins';
-  border-color: black;
+  border-color: rgb(0, 0, 0);
+  border-width: 1px;
 }
 
-
-h1 {
+.register-page h1 {
   text-align: center;
   font-size: 25px;
-  font-family: 'Poppins', sans-serif;
-    
+  padding-top: 10px;
+  font-family: 'Poppins', sans-serif; 
 }
 
-
-.register-page button {
-  margin-left: 3.4em;
-  border-radius: 10px;
-  border-color: black;
-  
+.roles-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.Register-button {
-  width: 135px;
-  height: 70px;
+.register-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.register-role {
+  text-align: center;
   font-size: 25px;
-  background-color: rgb(74, 183, 255);
-  font-family: 'Poppins', sans-serif;
-  cursor: pointer;
-  margin-top: 2em; 
-  position:relative;
-  left: 4em;
- 
 }
 
+.register-button {
+  width: 100%;
+  height: 40px;
+  margin-top: 29px;
+  font-size: 15px;
+  background-color: rgb(74, 183, 255);
+  border-radius: 10px;
+  border:none;
+  font-family: 'Poppins';
+  cursor: pointer;
+}
 
 
 .role-button{
-  width: 100px;
+  width: 100%;
   height: 40px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Poppins';
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 15px;
   font-family: 'Poppins';
   cursor: pointer;
 }
+
 
 
 /* End of Register Page */

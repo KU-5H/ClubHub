@@ -1,5 +1,5 @@
 import { useState, useContext, useEffect, useRef} from "react";
-import {UserContext} from '../../context/userContext'
+import {userContext} from '../../context/userContext'
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
@@ -9,7 +9,7 @@ import useAnnouncementForm from '../components/AnnouncementForm'
 // Home page should be for announcements/updates
 
 function Home() {
-  const {user, role} = useContext(UserContext)
+  const {user, role} = useContext(userContext)
 
   //these announcements are hard coded, the real announcements will need to be retrieved from database 
   const [announcements, setAnnouncements] = useState([

@@ -5,10 +5,10 @@ import location from './../assets/location.png';
 import schedule from './../assets/schedule.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import {UserContext} from '../../context/userContext'
+import {userContext} from '../../context/userContext'
 
 export default function About() {
-  const {user} = useContext(UserContext)
+  const {user} = useContext(userContext)
   const navigate = useNavigate()
   useEffect(() => {
     if(user) {
@@ -33,9 +33,9 @@ export default function About() {
             <br />
             You can get started by registering or logging in. <br />
             </p>
-            <div>
-              <button onClick={login}>Login</button>
-              <button onClick={register}>Register</button>
+            <div className='about-buttons'>
+              <button className='about-button' onClick={login}>Login</button>
+              <button className='about-button' onClick={register}>Register</button>
             </div>
         </div>
         <div className="about-category">

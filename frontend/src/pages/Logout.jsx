@@ -7,6 +7,6 @@ import { Navigate,useNavigate } from 'react-router-dom';
 export default function Logout() {
     const nav = useNavigate()
     return (
-        <Navigate to='/login' replace={true}/>
+        <div></div>
     )
 }

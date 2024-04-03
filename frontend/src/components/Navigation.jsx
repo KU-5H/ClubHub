@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useContext, useEffect } from 'react';
-import {UserContext} from '../../context/userContext'
+import {userContext} from '../../context/userContext'
 import { Navigate, useNavigate } from 'react-router-dom';
 
 export default function Navigation() {
   const nav = useNavigate()
-  const {user, logout} = useContext(UserContext)
+  const {user, logout} = useContext(userContext)
   const handleLogout = async (e) => {
     e.preventDefault()
     try {

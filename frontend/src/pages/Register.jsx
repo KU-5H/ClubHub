@@ -45,27 +45,32 @@ export default function Register() {
 
     return (
         <div className='register-page'>
-        <form  onSubmit={handleRegister}>
-            
-            <label>Name</label>
-            <div> </div>
-            <input className='register-enter-area' type="text" placeholder='enter name' value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
-            <div> </div>
-            <label>Email</label>
-            <input className='register-enter-area' type="email" placeholder='enter email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
-            <div> </div>
-            <label>Password</label>
-            <input className='register-enter-area' type="password" placeholder='enter password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
-            <div className='roles-container'>
-                <h1>Roles</h1>
+            <center>
+            <form className='register-bar' onSubmit={handleRegister}>
+            <div className='register-title'>Register</div>
+            <div className='register-elements'>
+                <div className='register-name'>
+                    <label>Name</label>
+                    <input className='register-enter-area' type="text" placeholder='Enter name' value={data.name} onChange={(e) => setData({...data, name: e.target.value})}/>
+                </div>
+                <div className='register-email'>
+                    <label>Email</label>
+                    <input className='register-enter-area' type="email" placeholder='Enter email' value={data.email} onChange={(e) => setData({...data, email: e.target.value})}/>
+                </div>
+                <div className='register-password'>
+                    <label>Password</label>
+                    <input className='register-enter-area' type="password" placeholder='Enter password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
+                </div>
+            </div>
+            <h1>Pick a Role</h1>
+            <div className='register-buttons'>
                 <button type='button' className='role-button' onClick={function(e){setData({...data, role: "Member"}); toastNoti("Member")}}>Member</button>
                 <button type='button' className='role-button' onClick={function(e){setData({...data, role: "Treasurer"}); toastNoti("Treasurer")}}>Treasurer</button>
                 <button type='button' className='role-button' onClick={function(e){setData({...data, role: "Admin"}); toastNoti("Admin")}}>Admin</button>
             </div>
-            
-                <button type='submit' className='Register-button'>Register</button>
-            
-        </form>
+            <button type='submit' className='register-button'>Register</button>  
+            </form>
+            </center>
         </div>  
     )
 }
