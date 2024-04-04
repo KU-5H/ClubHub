@@ -372,13 +372,16 @@ button:active {
 .login-bar{
   margin-top: 10vh;
   width: 500px;
-  height: 350px;
+  height: 40vh;
   border-radius: 10px;
   background-color: white;
   text-align: left;
   padding: 3vh;
   font-family: 'Poppins', sans-serif;
   font-size: 14px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .login-title {
@@ -430,6 +433,7 @@ button:active {
 .register-page {
   display: flex;
   justify-content: center;
+
 }
 
 .register-bar {
