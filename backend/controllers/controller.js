@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Announcement = require('../models/announcements')
+const Finance = require('../models/finance')
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
 
@@ -39,6 +40,10 @@ const registerUser = async (req, res) => {
         const hashedPassword = await hashPassword(password)
         const user = await User.create({
             name, email, password: hashedPassword, role
+        })
+
+        const userFinance = await Finance.create({ //creates a finance report entry in the database
+            email: email, paymentsMade: [], unpaidDebt: 0
         })
 
         return res.json(user)
@@ -125,6 +130,16 @@ const getAnnouncement = async (req, res) => {
     }
 }
 
+const getMemberType = async (req, res) => {
+    try {
+        const data = await User.findOne({ role: /^Treasurer$/i });
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
 module.exports = {
     test,
     registerUser,
@@ -133,4 +148,5 @@ module.exports = {
     addAnnouncement,
     getAnnouncement,
     logoutUser,
+    getMemberType,
 }
