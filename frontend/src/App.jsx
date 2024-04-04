@@ -7,6 +7,7 @@ import Communication from './Communication';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Calender from './pages/Calender'
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
@@ -22,6 +23,7 @@ function App() {
       <Toaster position='bottom-right' toastOptions={{duration: 2000}}/> 
       <Routes>
         <Route path='/' element={ <About />} />
+        <Route path='/calender' element={<Calender />}></Route>
         <Route path='/finances//*' element={<Finances />} />
         <Route path='/communication' element={<Communication />} />
         <Route path='/home' element={<Home />} />

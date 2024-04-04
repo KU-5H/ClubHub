@@ -2,9 +2,11 @@ import { Link, Route, Routes } from 'react-router-dom';
 import IncomeStatement from './IncomeStatement';
 import Payments from './Payments'
 import UnpaidDebts from './UnpaidDebts'
+import { UserContextProvider } from '../../context/userContext';
 
 export default function Finances() {
     return (
+      <UserContextProvider>
       <div className="finances"> 
         <ul className='finances-categories'>
           <Link to="income-statement"><li>Income Statement</li></Link>
@@ -18,6 +20,7 @@ export default function Finances() {
           <Route path='payments' element={<Payments/>} />
         </Routes>
       </div>
+      </UserContextProvider>
     );
   }
   

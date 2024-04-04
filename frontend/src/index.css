@@ -25,6 +25,7 @@ body{
   justify-content: space-evenly;
   margin: auto;
   padding: 5px;
+  width: 100%;
   border-bottom: 1px solid rgb(196, 196, 196);
 }
 
@@ -392,8 +393,11 @@ button:active {
   color: white;
 }
 
-.about-section button {
-  margin-left: 1em;
+.announcement-options {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  gap: 2em;
 }
 
 
@@ -596,14 +600,14 @@ Adding style to the unauthorized page in Home.jsx
 .unauthorized-message {
   font-weight: bold;
   font-size: 50px; /* Adjust the size as needed */
-  color: #D8000C; /* Adjust the color as needed */
+  color: #000000; /* Adjust the color as needed */
   margin-bottom: 20px; /* Spacing between this message and the next */
 }
 
 .message{
   font-size: 20px;
   margin-bottom: 20px;
-  color:#D8000C
+  color:#000000
 
 }
 
@@ -616,9 +620,38 @@ Adding style to the unauthorized page in Home.jsx
   text-decoration: underline; /* Adds underline on hover for better UX */
 }
 
+/* End of unauthorized page */
 
+/* Start of Calender Page*/
+.calender-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #d7effe;
+  min-height: 80vh;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
 
+.calender {
+  display: flex;
+  justify-content: center;
+}
 
+.date-options {
+  display: flex;
+  margin-top: 2em;
+  align-items: center;
+  gap: 2em;
+}
+
+.calender-options {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  gap: 2em;
+}
 
 
 
