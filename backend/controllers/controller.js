@@ -109,6 +109,7 @@ const addAnnouncement = async (req, res) => {
         const announcement = await Announcement.create({
             title, text
         })
+        
 
         return res.json(announcement)
     } catch (error) {

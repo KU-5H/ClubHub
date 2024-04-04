@@ -9,7 +9,7 @@ import useAnnouncementForm from '../components/AnnouncementForm'
 // Home page should be for announcements/updates
 
 function Home() {
-  const {user, role} = useContext(userContext)
+  const {user} = useContext(userContext)
 
   //these announcements are hard coded, the real announcements will need to be retrieved from database 
   const [announcements, setAnnouncements] = useState([]);
@@ -47,6 +47,7 @@ function Home() {
         } else {
           setShowForm(false)
           setAnnouncements([{title: title, body: text}, ...announcements]);
+          toast.success('New Announcement Added!')
         }
       } catch (error) {
         console.log(error)
