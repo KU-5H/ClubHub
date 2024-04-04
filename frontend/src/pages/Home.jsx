@@ -12,12 +12,7 @@ function Home() {
   const {user, role} = useContext(userContext)
 
   //these announcements are hard coded, the real announcements will need to be retrieved from database 
-  const [announcements, setAnnouncements] = useState([
-  ]);
-  const [data, setData] = useState({
-    title: '',
-    text: '',
-  })
+  const [announcements, setAnnouncements] = useState([]);
   const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
@@ -38,19 +33,18 @@ function Home() {
 
   function cancelAnnouncement() {
     setShowForm(false);
-    setData({})
   }
 
   const updateAnnouncements = async (e) => {
     e.preventDefault();
+    const title = e.target[0].value;
+    const text = e.target[1].value;
     if(showForm) {
-        const {title, text} = data
       try {
-        const {data} = await axios.post('/announcement', { title, text})
-        if (data.error) {
-          toast.error(data.error)
+        const dbAnnouncementUpdate = await axios.post('/announcement', { title, text})
+        if (dbAnnouncementUpdate.error) {
+          toast.error(dbAnnouncementUpdate.error)
         } else {
-          setData({})
           setShowForm(false)
           setAnnouncements([{title: title, body: text}, ...announcements]);
         }
@@ -72,12 +66,12 @@ function Home() {
         </div>
         {showForm && (
           <form onSubmit={updateAnnouncements} key={uuidv4()} className="announcement-container">
-            <input type="text" placeholder="Title Text..."  value={data.title} onChange={(e) => setData({...data, title: e.target.value})} />
+            <input type="text" placeholder="Title Text..."/>
             <textarea 
               key="text"
               placeholder="text goes here..." 
-              value={data.text} className="new-announcement-textarea" 
-              onChange={(e) => setData({...data, text: e.target.value})} />
+              className="new-announcement-textarea" 
+            />
             <div className="announcement-options">
               <button className="announcement-option cancel" onClick={cancelAnnouncement}>Cancel</button>
               <button type="submit" className="announcement-option submit">Submit</button>
