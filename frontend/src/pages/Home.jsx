@@ -41,9 +41,12 @@ function Home() {
     const text = e.target[1].value;
     if(showForm) {
       try {
-        const dbAnnouncementUpdate = await axios.post('/announcement', { title, text})
-        if (dbAnnouncementUpdate.error) {
-          toast.error(dbAnnouncementUpdate.error)
+        const dbAnnouncementUpdate = await axios.post('/announcement', {
+          title, text
+        })
+
+        if (dbAnnouncementUpdate.data.error) {
+          toast.error(dbAnnouncementUpdate.data.error)
         } else {
           setShowForm(false)
           setAnnouncements([{title: title, body: text}, ...announcements]);

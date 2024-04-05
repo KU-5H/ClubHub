@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import ReactCalendar from 'react-calendar'
 import 'react-calendar/dist/Calendar.css'
 import {userContext} from '../../context/userContext'
@@ -12,34 +12,47 @@ import { TimePicker } from '@mui/x-date-pickers/TimePicker';
 import dayjs from 'dayjs';
 import {Calendar, dayjsLocalizer} from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { toast } from 'react-hot-toast';
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
 
 export default function AdminCalendar() {
+
+    // Creation of the dayjs localizer, required for calender
     const localizer = dayjsLocalizer(dayjs)
+
+    //User context for user authentication
     const {user} = useContext(userContext)
-    
-    const [date, setDate] = useState(new Date());
-    const [startDate, setStartDate] = useState(dayjs);
-    const [endDate, setEndDate] = useState(dayjs);
 
-    const [startTime, setStartTime] = useState(null);
-    const [endTime, setEndTime] = useState(null);
-
+    //State to show the form for creating a new event
     const [showForm, setShowForm] = useState(false);
-    const today = dayjs();
-    const [event, setEvent] = useState([{
-        title: 'Temporary Event',
-        desc: 'This is a temporary event',
-        start: today.hour(15).minute(0).second(0).toDate(),
-        end: today.hour(16).minute(0).second(0).toDate(),
-        allDay: false
-      },
-      {
-        title: 'Temporary Event 3',
-        start: today.hour(19).minute(0).second(0).toDate(),
-        end: today.hour(20).minute(0).second(0).toDate(),
-        allDay: false
-      }
-    ]);
+
+    //A state that stores all events in the calender
+    const [event, setEvent] = useState([]);
+
+    //States for modal events
+    const [selectedEvent, setSelectedEvent] = useState(null);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
+    const [eventData, setEventData] = useState({
+        startDate: null,
+        endDate: null,
+        startTime: null,
+        endTime: null,
+      });
+
+    useEffect(() => {
+        const showData = async () => {
+            const {data} = await axios.get('/calender')
+            setEvent(prevEvents => [
+              ...prevEvents,
+              ...data.map(item => (
+                { title: item.title, desc: item.text, start: dayjs(item.startDate).toDate(), end: dayjs(item.endDate).toDate()})), 
+            ]);
+          }
+          showData()
+    }, [])
 
     const handleClick = (date) => {
         console.log(date);
@@ -54,27 +67,35 @@ export default function AdminCalendar() {
         setShowForm(false);
     }
 
-    const newEvent = (e) => {
+    const newEvent = async (e) => {
         e.preventDefault();
+        const {startDate, endDate, startTime, endTime } = eventData;
         const title = e.target[0].value;
         const text = e.target[1].value;
-        console.log(title);
-        console.log(text);
-        console.log('Startdate', startDate);
-        console.log('Starttime', startTime);
-        console.log('endDate', endDate);
-        console.log('endTime',endTime);
         if(showForm) {
-            const startDateTime = dayjs(startDate).hour(dayjs(startTime).hour()).minute(dayjs(startTime).minute()).second(0);
-            const endDateTime = dayjs(endDate).hour(dayjs(endTime).hour()).minute(dayjs(endTime).minute()).second(0);
+            const startDateTime = dayjs(startDate).hour(dayjs(startTime).hour()).minute(dayjs(startTime).minute()).second(0).toDate();
+            const endDateTime = dayjs(endDate).hour(dayjs(endTime).hour()).minute(dayjs(endTime).minute()).second(0).toDate();
 
-            setEvent([...event, {
-                title: title,
-                desc: text,
-                start: startDateTime.toDate(),
-                end: endDateTime.toDate(),
-            }]);
-            setShowForm(false)
+            try {
+                const calenderData = await axios.post('/calenderevent', {
+                    title, text, startDateTime, endDateTime
+                });
+
+                if(calenderData.data.error) {
+                    toast.error(calenderData.data.error)
+                } else {
+                    setShowForm(false)
+                    setEvent([...event, {
+                        title: title,
+                        desc: text,
+                        start: startDateTime,
+                        end: endDateTime,
+                    }])
+                    toast.success('New Event Added!')
+                }
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
 
@@ -91,21 +112,21 @@ export default function AdminCalendar() {
                             <input type="text" placeholder="Event Name..."/>
                             <textarea 
                             key="text"
-                            placeholder="Event Description..." 
+                            placeholder="Event Description (optional)..." 
                             className="new-announcement-textarea" 
                             />
                             <div className='date-options'>
                                 <div className="date-time-start">
                                     <LocalizationProvider className='' dateAdapter={AdapterDayjs}>
-                                        <DatePicker  label='Pick a Date...' value={startDate} onChange={(newValue) => setStartDate(newValue)}/>
-                                        <TimePicker  label='Select Time...' value={startTime} onChange={(newValue) => setStartTime(newValue)}/>
+                                        <DatePicker  label='Pick a Date...' value={eventData.startDate} onChange={(newValue) => setEventData({...eventData, startDate: newValue})}/>
+                                        <TimePicker  label='Select Time...' value={eventData.startTime} onChange={(newValue) => setEventData({...eventData, startTime: newValue})}/>
                                     </LocalizationProvider>
                                 </div>
                                 <h2>to</h2>
                                 <div className='date-time-end'>
                                     <LocalizationProvider className='dateEnd' dateAdapter={AdapterDayjs}>
-                                        <DatePicker label='Pick a Date...' value={endDate} onChange={(newValue) => setEndDate(newValue)} />
-                                        <TimePicker  label='Select Time...'value={endTime} onChange={(newValue) => setEndTime(newValue)}/>
+                                        <DatePicker label='Pick a Date...' value={eventData.endDate} onChange={(newValue) => setEventData({...eventData, endDate: newValue})} />
+                                        <TimePicker  label='Select Time...' value={eventData.endTime} onChange={(newValue) => setEventData({...eventData, endTime: newValue})}/>
                                     </LocalizationProvider>
                                 </div>
                             </div>
@@ -121,21 +142,48 @@ export default function AdminCalendar() {
                             events={event}
                             startAccessor="start"
                             endAccessor="end"
-                            style={{ height: 700, width: '90%',  margin: '50px', fontFamily: 'Poppins'}}
+                            style={{ height: 600, width: '90%',  margin: '50px', fontFamily: 'Poppins'}}
                             onSelectEvent={event => {
-                                console.log(event);
-                                console.log(event.desc);
+                                setSelectedEvent(event);
+                                setModalIsOpen(true);
                             }}
                         />
                     </div>
-
+                    
                 </div>) : (
                 <div className="unauthorized-container">
                     <div className="unauthorized-message"> Unauthorized!</div>
                     <div className="message">You are not authorized to see this page. Please <Link to={'/Login'}>Login</Link> First</div>
                 </div>
-            )
-            }
+            )}
+            <Modal
+                className={'modal'}
+                isOpen={modalIsOpen}
+                onRequestClose={() => setModalIsOpen(false)}
+                contentLabel="Event Details"
+                style={{
+                    overlay: {
+                    zIndex: 10,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(0, 0, 0, 0.75)', // This makes the background solid
+                    },
+                content: {
+                    position: 'relative',
+                    backgroundColor: 'white', // This sets the background color of the modal
+                    border: '1px solid #ccc', // This sets the border of the modal
+                    borderRadius: '20px', // This makes the borders round
+                    padding: '20px', // This adds some padding inside the modal
+                    }
+                }}
+                >
+                <div>
+                    <h2>{selectedEvent?.title}</h2>
+                    <p>{selectedEvent?.desc}</p>
+                </div>
+                <button onClick={() => setModalIsOpen(false)}>Close</button>
+            </Modal>
         </div>
     )
 }
