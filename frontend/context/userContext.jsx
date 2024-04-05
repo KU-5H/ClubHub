@@ -50,7 +50,7 @@ export function UserContextProvider({children}) {
             navigate('/login')
             setTimeout(function () { 
                 window.location.reload();
-            }, 1500);
+            }, 1000);
         } catch (error) {
             console.log(error);
         }
