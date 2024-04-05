@@ -1,7 +1,9 @@
 const User = require('../models/user');
 const Announcement = require('../models/announcements')
+const Calender = require('../models/calender')
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
+const dayjs = require('dayjs');
 
 const test = (req, res) => {
     res.json('test is working')
@@ -126,6 +128,53 @@ const getAnnouncement = async (req, res) => {
     }
 }
 
+const newCalenderEvent = async (req, res) => {
+    const {title, text, startDateTime, endDateTime} = req.body;
+
+    try {
+        if (!title) {
+            return res.json({
+                error: "Title Needed!"
+            })
+        }
+
+        if(!startDateTime) {
+            return res.json({
+              error: "Start date needed!"
+            })
+          }
+      
+        if(!endDateTime) {
+            return res.json({
+              error: "End date needed!"
+            })
+        }
+
+        if(dayjs(startDateTime).isAfter(dayjs(endDateTime))) {
+            return res.json({
+                error: "End date must be after start date"
+            })
+        }
+
+        const calender = await Calender.create({
+            text, title, startDate: startDateTime, endDate: endDateTime
+        })
+
+        return res.json(calender)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+getCalenderEvents = async (req, res) => {
+    try {
+        const data = await Calender.find({});
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     test,
     registerUser,
@@ -134,4 +183,6 @@ module.exports = {
     addAnnouncement,
     getAnnouncement,
     logoutUser,
+    newCalenderEvent,
+    getCalenderEvents
 }
