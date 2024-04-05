@@ -17,6 +17,9 @@ body{
   background-color: #d7effe;   
 }
 
+
+
+
 /* Nav Bar Area*/
 
 .nav-bar {
@@ -54,7 +57,7 @@ body{
 }
 
 .nav-bar li {
-  font-size: 22px;
+  font-size: 18px;
   padding: 1em;
   border: 1px solid transparent;
   list-style-type: none;
@@ -471,6 +474,16 @@ button:active {
   border:none;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-submit:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.login-submit:active {
+  background-color: rgb(74, 183, 150);
 }
 
 /* end of login page */
@@ -540,6 +553,7 @@ button:active {
   gap: 1vh;
 }
 
+
 .register-role {
   text-align: center;
   font-size: 25px;
@@ -555,6 +569,16 @@ button:active {
   border:none;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.register-button:active {
+  background-color: rgb(74, 183, 150);
 }
 
 .selected {
@@ -576,6 +600,16 @@ button:active {
   font-size: 15px;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.role-button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.role-button:active {
+  background-color: rgb(74, 183, 150);
 }
 
 
@@ -638,7 +672,7 @@ Adding style to the unauthorized page in Home.jsx
 .calender {
   background-color: white;
   border-radius: 25px;
-  width: 85%;
+  width: 75%;
 }
 
 .date-options {
@@ -671,10 +705,52 @@ Adding style to the unauthorized page in Home.jsx
   width: 18em;
 }
 
+/* Modal Properties for both Calender and Logout */
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30em;
+  animation: fadeIn ease 0.5s;
+}
+
+.modal-calender {
+  height: 30em;
+}
+
+.modal button {
+  width: 100%;
+  height: 40px;
+  margin-top: 29px;
+  font-size: 15px;
+  background-color: rgb(74, 183, 255);
+  border-radius: 10px;
+  border: none;
+  font-family: 'Poppins';
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 
+.modal button:hover {
+  background-color: rgb(74, 183, 200);
+}
 
+.modal button:active {
+  background-color: rgb(74, 183, 150);
+}
 
+.modal-button {
+  display: flex;
+  gap: 2em;
+}
 
-
-
+.modal-button .confirm {
+  background-color:rgb(248, 76, 76);
+  color: white;
+}
