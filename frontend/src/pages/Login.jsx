@@ -13,8 +13,6 @@ export default function Login() {
         password: '',
     })
 
-
-
     const handleLogin = async (e) => {
         e.preventDefault()
         const {email, password} = data
@@ -24,7 +22,6 @@ export default function Login() {
             console.log(error)
         }
     }
-    
 
     return (
         <div className="login-page">
