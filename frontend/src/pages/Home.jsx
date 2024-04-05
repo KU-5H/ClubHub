@@ -38,7 +38,6 @@ function Home() {
   const updateAnnouncements = async (e) => {
     e.preventDefault();
     const title = e.target[0].value;
-    console.log(title)
     const text = e.target[1].value;
     if(showForm) {
       try {
