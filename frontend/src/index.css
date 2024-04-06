@@ -10,7 +10,6 @@
   list-style: none;
   box-sizing: border-box;
   font-family: "Poppins";
-
 }
 
 body{
@@ -484,6 +483,7 @@ button:active {
 
 .login-submit:active {
   background-color: rgb(74, 183, 150);
+  
 }
 
 /* end of login page */
@@ -579,6 +579,7 @@ button:active {
 
 .register-button:active {
   background-color: rgb(74, 183, 150);
+  color: white;
 }
 
 .selected {
@@ -673,6 +674,9 @@ Adding style to the unauthorized page in Home.jsx
   background-color: white;
   border-radius: 25px;
   width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .date-options {
@@ -739,10 +743,12 @@ Adding style to the unauthorized page in Home.jsx
 
 .modal button:hover {
   background-color: rgb(74, 183, 200);
+  color: white;
 }
 
 .modal button:active {
   background-color: rgb(74, 183, 150);
+  color: white;
 }
 
 .modal-button {
@@ -754,3 +760,45 @@ Adding style to the unauthorized page in Home.jsx
   background-color:rgb(248, 76, 76);
   color: white;
 }
+
+.eventButtons {
+  display: flex;
+  width: 60%;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.eventButtons button {
+  height: 35px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.eventButtons .update {
+  background-color: rgb(93, 226, 93);
+}
+
+.eventButtons .update:hover {
+  background-color: rgb(70, 170, 70);
+  color: white;
+}
+
+.eventButtons .update:active {
+  background-color: rgb(49, 119, 49);
+  color: white;
+}
+
+.eventButtons .delete {
+  background-color: rgb(248, 76, 76);
+}
+
+.eventButtons .delete:hover {
+  background-color: rgb(200, 30, 30);
+  color: white;
+}
+
+.eventButtons .delete:active {
+  background-color: rgb(131, 19, 19);
+  color: white;
+}
+

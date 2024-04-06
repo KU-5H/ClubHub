@@ -64,7 +64,13 @@ export default function AdminCalendar() {
     }
 
     function cancelEvent() {
+        setEventData({});
         setShowForm(false);
+    }
+
+    const updateEvents = async (e, event) => {
+        e.preventDefault();
+        console.log(event.start)
     }
 
     const newEvent = async (e) => {
@@ -182,7 +188,11 @@ export default function AdminCalendar() {
                     <h2>{selectedEvent?.title}</h2>
                     <p>{selectedEvent?.desc}</p>
                 </div>
-                <button onClick={() => setModalIsOpen(false)}>Close</button>
+                <div className='eventButtons'>
+                    <button className='update' onClick={(e) => updateEvents(e, selectedEvent)}>Update</button>
+                    <button className='delete' onClick={(e) => updateEvents(e)}>Delete</button>
+                    <button className='close' onClick={() => setModalIsOpen(false)}>Close</button>
+                </div>
             </Modal>
         </div>
     )
