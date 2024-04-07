@@ -45,6 +45,7 @@ export default function AdminCalendar() {
     useEffect(() => {
         const showData = async () => {
             const {data} = await axios.get('/calender')
+            setEvent([]);
             setEvent(prevEvents => [
               ...prevEvents,
               ...data.map(item => (
@@ -72,6 +73,33 @@ export default function AdminCalendar() {
         e.preventDefault();
         console.log(event.start)
     }
+
+    const deleteEvent = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.delete('/api/deletevent', {data: {title: selectedEvent.title, start: selectedEvent.start, end: selectedEvent.end, desc: selectedEvent.desc}});
+
+            if(response.data.error) {
+                toast.error("An error occurred while deleting the event. Please try again.");
+            } else {
+                setModalIsOpen(false);
+                showData();
+            }
+        } catch (error) {
+            console.error(error);
+            alert('An error occurred while deleting the event. Please try again.');
+        }
+    }
+
+    const showData = async () => {
+        const {data} = await axios.get('/calender')
+        setEvent([]);
+        setEvent(prevEvents => [
+          ...prevEvents,
+          ...data.map(item => (
+            { title: item.title, desc: item.text, start: dayjs(item.startDate).toDate(), end: dayjs(item.endDate).toDate()})), 
+        ]);
+      }
 
     const newEvent = async (e) => {
         e.preventDefault();
@@ -190,7 +218,7 @@ export default function AdminCalendar() {
                 </div>
                 <div className='eventButtons'>
                     <button className='update' onClick={(e) => updateEvents(e, selectedEvent)}>Update</button>
-                    <button className='delete' onClick={(e) => updateEvents(e)}>Delete</button>
+                    <button className='delete' onClick={(e) => deleteEvent(e)}>Delete</button>
                     <button className='close' onClick={() => setModalIsOpen(false)}>Close</button>
                 </div>
             </Modal>

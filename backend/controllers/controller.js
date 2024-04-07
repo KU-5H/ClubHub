@@ -175,6 +175,23 @@ getCalenderEvents = async (req, res) => {
     }
 }
 
+deleteEvent = async (req, res) => {
+    try {
+        const data = req.body;
+        
+        if (!data) {
+            return res.json({
+                error: "No data found"
+            })
+        } else {
+            const event = await Calender.findOneAndDelete({title: data.title, startDate: data.start, endDate: data.end, text: data.desc})
+            res.json(event)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 module.exports = {
     test,
     registerUser,
@@ -184,5 +201,6 @@ module.exports = {
     getAnnouncement,
     logoutUser,
     newCalenderEvent,
-    getCalenderEvents
+    getCalenderEvents,
+    deleteEvent,
 }
