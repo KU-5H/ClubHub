@@ -251,8 +251,8 @@ export default function AdminCalendar() {
                     <p style={{wordWrap: 'break-word'}}>{selectedEvent?.desc}</p>
                 </div>
                 <div className='eventButtons'>
-                    <button className='update' onClick={() => {setShowUpdateForm(true); {setModalIsOpen(false)}}}>Update</button>
-                    <button className='delete' onClick={() => deleteEvent()}>Delete</button>
+                    {user.role === 'Admin' && (<button className='update' onClick={() => {setShowUpdateForm(true); {setModalIsOpen(false)}}}>Update</button>)}
+                    {user.role === 'Admin' && (<button className='delete' onClick={() => deleteEvent()}>Delete</button>)}
                     <button className='close' onClick={() => setModalIsOpen(false)}>Close</button>
                 </div>
             </Modal>
