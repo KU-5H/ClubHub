@@ -19,6 +19,20 @@ Modal.setAppElement('#root');
 
 export default function AdminCalendar() {
 
+    //Show all the events in the calender on page load
+    useEffect(() => {
+        const showData = async () => {
+            const {data} = await axios.get('/calender')
+            setEvent([]);
+            setEvent(prevEvents => [
+              ...prevEvents,
+              ...data.map(item => (
+                {  _id: item._id, title: item.title, desc: item.text, start: dayjs(item.startDate).toDate(), end: dayjs(item.endDate).toDate()})), 
+            ]);
+          }
+          showData()
+    }, [])
+
     // Creation of the dayjs localizer, required for calender
     const localizer = dayjsLocalizer(dayjs)
 
@@ -27,6 +41,7 @@ export default function AdminCalendar() {
 
     //State to show the form for creating a new event
     const [showForm, setShowForm] = useState(false);
+    const [showUpdateForm, setShowUpdateForm] = useState(false);
 
     //A state that stores all events in the calender
     const [event, setEvent] = useState([]);
@@ -36,48 +51,62 @@ export default function AdminCalendar() {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
     const [eventData, setEventData] = useState({
-        startDate: null,
-        endDate: null,
-        startTime: null,
-        endTime: null,
+        startDate: dayjs(),
+        endDate: dayjs(),
+        startTime: dayjs(),
+        endTime: dayjs().add(1, 'hour'),
       });
 
-    useEffect(() => {
-        const showData = async () => {
-            const {data} = await axios.get('/calender')
-            setEvent([]);
-            setEvent(prevEvents => [
-              ...prevEvents,
-              ...data.map(item => (
-                { title: item.title, desc: item.text, start: dayjs(item.startDate).toDate(), end: dayjs(item.endDate).toDate()})), 
-            ]);
-          }
-          showData()
-    }, [])
-
-    const handleClick = (date) => {
-        console.log(date);
-        setDate(date);
-    }
 
     function makeEvent() {
         setShowForm(true);
     }
 
     function cancelEvent() {
-        setEventData({});
+        setEventData({
+            startDate: dayjs(),
+            endDate: dayjs(),
+            startTime: dayjs(),
+            endTime: dayjs().add(1, 'hour'),
+        });
         setShowForm(false);
     }
 
-    const updateEvents = async (e, event) => {
-        e.preventDefault();
-        console.log(event.start)
-    }
-
-    const deleteEvent = async (e) => {
+    const updateEvents = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.delete('/api/deletevent', {data: {title: selectedEvent.title, start: selectedEvent.start, end: selectedEvent.end, desc: selectedEvent.desc}});
+            const {start, end, _id } = selectedEvent;
+            const title = e.target[0].value;
+            const text = e.target[1].value;
+            if(showUpdateForm) {
+    
+                const response = await axios.put('/api/updatevent', {
+                    title, text, start, end, _id
+                });
+    
+                if(response.data.error) {
+                    toast.error(response.data.error);
+                } else {
+                    setShowUpdateForm(false);
+                    showData();
+                    toast.success('Event Updated!')
+                }
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    
+    function cancelUpdateEvent() {
+        setSelectedEvent(null);
+        setShowUpdateForm(false);
+    }
+
+    const deleteEvent = async () => {
+
+        try {
+            const response = await axios.delete('/api/deletevent', {data: {title: selectedEvent.title, start: selectedEvent.start, end: selectedEvent.end, desc: selectedEvent.desc, _id: selectedEvent._id}});
 
             if(response.data.error) {
                 toast.error("An error occurred while deleting the event. Please try again.");
@@ -87,7 +116,6 @@ export default function AdminCalendar() {
             }
         } catch (error) {
             console.error(error);
-            alert('An error occurred while deleting the event. Please try again.');
         }
     }
 
@@ -97,7 +125,7 @@ export default function AdminCalendar() {
         setEvent(prevEvents => [
           ...prevEvents,
           ...data.map(item => (
-            { title: item.title, desc: item.text, start: dayjs(item.startDate).toDate(), end: dayjs(item.endDate).toDate()})), 
+            { _id: item._id, title: item.title, desc: item.text, start: dayjs(item.startDate).toDate(), end: dayjs(item.endDate).toDate()})), 
         ]);
       }
 
@@ -124,6 +152,7 @@ export default function AdminCalendar() {
                         desc: text,
                         start: startDateTime,
                         end: endDateTime,
+                        _id: calenderData.data._id
                     }])
                     toast.success('New Event Added!')
                 }
@@ -142,7 +171,7 @@ export default function AdminCalendar() {
                         {user.role === 'Admin' && (<p className='add-announcement' onClick={() => makeEvent()}>+</p>)}
                     </div>
                     {showForm && (
-                        <form onSubmit={newEvent} key={uuidv4()} className="announcement-container">
+                        <form onSubmit={newEvent}  className="announcement-container">
                             <input type="text" placeholder="Event Name..."/>
                             <textarea 
                             key="text"
@@ -212,16 +241,53 @@ export default function AdminCalendar() {
                     }
                 }}
                 >
-                <div>
-                    <h2>{selectedEvent?.title}</h2>
-                    <p>{selectedEvent?.desc}</p>
+                <div className='modalContent'>
+                    <div>
+                        <h2 style={{wordWrap: 'break-word'}}>{selectedEvent?.title}</h2>
+                        <p style={{wordWrap: 'break-word'}}>
+                            {dayjs(selectedEvent?.start).format('YYYY-MM-DD HH:mm A')} - {dayjs(selectedEvent?.end).format('YYYY-MM-DD HH:mm A')}
+                        </p>
+                    </div>
+                    <p style={{wordWrap: 'break-word'}}>{selectedEvent?.desc}</p>
                 </div>
                 <div className='eventButtons'>
-                    <button className='update' onClick={(e) => updateEvents(e, selectedEvent)}>Update</button>
-                    <button className='delete' onClick={(e) => deleteEvent(e)}>Delete</button>
+                    <button className='update' onClick={() => {setShowUpdateForm(true); {setModalIsOpen(false)}}}>Update</button>
+                    <button className='delete' onClick={() => deleteEvent()}>Delete</button>
                     <button className='close' onClick={() => setModalIsOpen(false)}>Close</button>
                 </div>
             </Modal>
+            {showUpdateForm && (
+                <div>
+                    <form onSubmit={updateEvents} className="announcement-container">
+                                <input defaultValue={selectedEvent.title} type="text" placeholder="Event Name..."/>
+                                <textarea 
+                                defaultValue={selectedEvent.desc}
+                                key="text"
+                                placeholder="Event Description (optional)..." 
+                                className="new-announcement-textarea" 
+                                />
+                                <div className='date-options'>
+                                    <div className="date-time-start">
+                                        <LocalizationProvider className='' dateAdapter={AdapterDayjs}>
+                                            <DatePicker  label='Pick a Date...' value={dayjs(selectedEvent.start)} onChange={(newValue) => setSelectedEvent({...selectedEvent, start: newValue})}/>
+                                            <TimePicker  label='Select Time...' value={dayjs(selectedEvent.start)} onChange={(newValue) => setSelectedEvent({...selectedEvent, start: newValue})}/>
+                                        </LocalizationProvider>
+                                    </div>
+                                    <h2>to</h2>
+                                    <div className='date-time-end'>
+                                        <LocalizationProvider className='dateEnd' dateAdapter={AdapterDayjs}>
+                                            <DatePicker label='Pick a Date...' value={dayjs(selectedEvent.end)} onChange={(newValue) => setSelectedEvent({...selectedEvent, end: newValue})} />
+                                            <TimePicker  label='Select Time...' value={dayjs(selectedEvent.end)} onChange={(newValue) => setSelectedEvent({...selectedEvent, end: newValue})}/>
+                                        </LocalizationProvider>
+                                    </div>
+                                </div>
+                                <div className="calender-options">
+                                    <button type='button'  className="announcement-option cancel" onClick={cancelUpdateEvent}>Cancel</button>
+                                    <button type="submit" className="announcement-option submit">Submit</button>
+                                </div>
+                        </form>
+                </div>
+            )}
         </div>
     )
 }

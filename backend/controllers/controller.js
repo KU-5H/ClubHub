@@ -178,18 +178,57 @@ getCalenderEvents = async (req, res) => {
 deleteEvent = async (req, res) => {
     try {
         const data = req.body;
-        
+
         if (!data) {
             return res.json({
                 error: "No data found"
             })
         } else {
-            const event = await Calender.findOneAndDelete({title: data.title, startDate: data.start, endDate: data.end, text: data.desc})
+            const event = await Calender.findOneAndDelete({_id: data._id})
             res.json(event)
         }
     } catch (error) {
         console.log(error)
     }
+}
+
+updateEvent = async (req, res) => {
+    const {title, text, start, end, _id} = req.body;
+
+    try {
+        if (!title) {
+            return res.json({
+                error: "Title Needed!"
+            })
+        }
+
+        if(!start) {
+            return res.json({
+              error: "Start date needed!"
+            })
+          }
+      
+        if(!end) {
+            return res.json({
+              error: "End date needed!"
+            })
+        }
+
+        if(dayjs(start).isAfter(dayjs(end))) {
+            return res.json({
+                error: "End date must be after start date"
+            })
+        }
+
+        const event = await Calender.findOneAndUpdate({_id: _id}, {
+            text, title, startDate: start, endDate: end
+        })
+
+        return res.json(event)
+    } catch (error) {
+        console.log(error)
+    }
+
 }
 
 module.exports = {
@@ -203,4 +242,5 @@ module.exports = {
     newCalenderEvent,
     getCalenderEvents,
     deleteEvent,
+    updateEvent,
 }

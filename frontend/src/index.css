@@ -802,3 +802,8 @@ Adding style to the unauthorized page in Home.jsx
   color: white;
 }
 
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
