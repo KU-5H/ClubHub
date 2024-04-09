@@ -4,6 +4,8 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { v4 as uuidv4 } from 'uuid';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 // Home page should be for announcements/updates
 
@@ -58,9 +60,18 @@ function Home() {
   }
 
 
+  const [hoveredAnnouncement, setHoveredAnnouncement] = useState(null);
+
+  const handleMouseEnter = (id) => {
+      setHoveredAnnouncement(id);
+  };
+  
+  const handleMouseLeave = () => {
+      setHoveredAnnouncement(null);
+  };
+
 
   return (
-
     <div>
       {user ? (<div className="announcements-page">
         <div className="announcements-title">
@@ -81,10 +92,16 @@ function Home() {
             </div>
           </form>
         )}
-        {announcements.map(announcement => (
-          <div key={uuidv4()} className="announcement-container">
+        {announcements.map((announcement, index) => (
+          <div key={index} onMouseEnter={() => handleMouseEnter(index)} onMouseLeave={handleMouseLeave} className="announcement-container"> 
             <p>{announcement.title}</p>
             <textarea className="announcement-container-textarea" value={announcement.body} readOnly />
+            {hoveredAnnouncement === index && user.role === 'Admin' && (
+                    <div className="icons-container">
+                        <EditIcon className="edit-icon" onClick={() => handleEdit(index)} />
+                        <DeleteIcon className="delete-icon" onClick={() => handleDelete(index)} />
+                    </div>
+              )}
           </div>
         ))}
       </div>) : (

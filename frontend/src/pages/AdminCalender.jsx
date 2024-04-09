@@ -58,10 +58,12 @@ export default function AdminCalendar() {
       });
 
 
+    //Function to show the form for creating a new event
     function makeEvent() {
         setShowForm(true);
     }
 
+    //Function to cancel the creation of a new event
     function cancelEvent() {
         setEventData({
             startDate: dayjs(),
@@ -72,6 +74,7 @@ export default function AdminCalendar() {
         setShowForm(false);
     }
 
+    //Function to update the event
     const updateEvents = async (e) => {
         e.preventDefault();
         try {
@@ -97,14 +100,14 @@ export default function AdminCalendar() {
         }
     }
 
-    
+    //Function to cancel the update of an event
     function cancelUpdateEvent() {
         setSelectedEvent(null);
         setShowUpdateForm(false);
     }
 
+    //Function to delete an event
     const deleteEvent = async () => {
-
         try {
             const response = await axios.delete('/api/deletevent', {data: {title: selectedEvent.title, start: selectedEvent.start, end: selectedEvent.end, desc: selectedEvent.desc, _id: selectedEvent._id}});
 
@@ -119,6 +122,7 @@ export default function AdminCalendar() {
         }
     }
 
+    //Function to show all the events in the calender
     const showData = async () => {
         const {data} = await axios.get('/calender')
         setEvent([]);
@@ -129,6 +133,7 @@ export default function AdminCalendar() {
         ]);
       }
 
+    //Function to create a new event
     const newEvent = async (e) => {
         e.preventDefault();
         const {startDate, endDate, startTime, endTime } = eventData;
@@ -162,6 +167,7 @@ export default function AdminCalendar() {
         }
     }
 
+    //Return the calender page
     return (
         <div>
             {user ? (
