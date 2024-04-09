@@ -1,5 +1,6 @@
 const User = require('../models/user');
 const Announcement = require('../models/announcements')
+const Finance = require('../models/finance')
 const Calender = require('../models/calender')
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
@@ -41,6 +42,10 @@ const registerUser = async (req, res) => {
         const hashedPassword = await hashPassword(password)
         const user = await User.create({
             name, email, password: hashedPassword, role
+        })
+
+        const userFinance = await Finance.create({ //creates a finance report entry in the database
+            email: email, paymentsMade: [], unpaidDebt: 0
         })
 
         return res.json(user)
@@ -128,6 +133,16 @@ const getAnnouncement = async (req, res) => {
     }
 }
 
+const getMemberEmails = async (req, res) => {
+    try {
+        const users = await User.find({ role: /^Member$/i }); //Gets a list of all the members
+        const emails = users.map(user => user.email); //gets a list of all of the emails of every user in the database
+        res.json(emails)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const deleteAnnouncement = async (req, res) => {
     const data = req.body;
     try {
@@ -147,6 +162,18 @@ const deleteAnnouncement = async (req, res) => {
     }
 }
 
+const getFinances = async (req, res) => {
+    try {
+        const {mail} = req.body;
+        const info = await Finance.find({ email: new RegExp('^' + mail + '$', 'i') });
+        res.json(info);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+
+=======
 const newCalenderEvent = async (req, res) => {
     const {title, text, startDateTime, endDateTime} = req.body;
 
@@ -258,6 +285,8 @@ module.exports = {
     addAnnouncement,
     getAnnouncement,
     logoutUser,
+    getMemberEmails,
+    getFinances
     newCalenderEvent,
     getCalenderEvents,
     deleteEvent,
