@@ -12,6 +12,8 @@
   font-family: "Poppins";
 }
 
+
+
 body{
   background-color: #d7effe;   
 }
@@ -827,4 +829,17 @@ Adding style to the unauthorized page in Home.jsx
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
+
+/* End of Calender Page */
+
+/* Start of Aspect Page for different screen sizes */
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+  .login-bar {
+    height: 50vh;
+  }
+  .register-bar {
+    height: 65vh;
+  }
 }
