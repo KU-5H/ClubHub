@@ -7,7 +7,7 @@ import Communication from './Communication';
 import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Logout from './pages/Logout'
+import AdminCalender from './pages/AdminCalender'
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
@@ -17,20 +17,18 @@ axios.defaults.withCredentials = true
 
 function App() {
 
-
-
-  return (
+  return  (
     <UserContextProvider>
       <Navbar />
       <Toaster position='bottom-right' toastOptions={{duration: 2000}}/> 
       <Routes>
         <Route path='/' element={ <About />} />
+        <Route path='/calender' element={<AdminCalender />}></Route>
         <Route path='/finances//*' element={<Finances />} />
         <Route path='/communication' element={<Communication />} />
         <Route path='/home' element={<Home />} />
         <Route path='/register' element={<Register />}></Route>
         <Route path='/login' element={<Login />}></Route>
-        <Route path='/logout' element={<Logout />}></Route>
       </Routes>
     </UserContextProvider>
   )

@@ -60,7 +60,6 @@ function Finances(){
     return <div>Loading...</div>;
   }
 
-
   return (
     <div className="finances">
       {user.role === 'Member' && (
