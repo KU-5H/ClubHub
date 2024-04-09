@@ -128,6 +128,25 @@ const getAnnouncement = async (req, res) => {
     }
 }
 
+const deleteAnnouncement = async (req, res) => {
+    const data = req.body;
+    try {
+
+        if (!data._id) {
+            return res.json({
+                error: "No data found"
+            })
+        }
+
+        const announcement = await Announcement.findOneAndDelete({_id: data._id})
+
+        return res.json(announcement)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 const newCalenderEvent = async (req, res) => {
     const {title, text, startDateTime, endDateTime} = req.body;
 
@@ -243,4 +262,5 @@ module.exports = {
     getCalenderEvents,
     deleteEvent,
     updateEvent,
+    deleteAnnouncement,
 }

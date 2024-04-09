@@ -12,20 +12,29 @@ import DeleteIcon from '@mui/icons-material/Delete';
 function Home() {
   const {user} = useContext(userContext)
 
-  //these announcements are hard coded, the real announcements will need to be retrieved from database 
   const [announcements, setAnnouncements] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  const [hoveredAnnouncement, setHoveredAnnouncement] = useState(null);
 
   useEffect(() => {
     const showData = async () => {
       const {data} = await axios.get('/announcementget')
       setAnnouncements(prevAnnouncements => [
         ...prevAnnouncements,
-        ...data.reverse().map(item => ({ title: item.title, body: item.text })), 
+        ...data.reverse().map(item => ({ title: item.title, body: item.text, id: item._id})), 
       ]);
     }
     showData()
   }, [])
+
+  const showData = async () => {
+    setAnnouncements([]);
+    const {data} = await axios.get('/announcementget')
+    setAnnouncements(prevAnnouncements => [
+      ...prevAnnouncements,
+      ...data.reverse().map(item => ({ title: item.title, body: item.text, id: item._id})), 
+    ]);
+  }
 
 
   function createAnnouncementDraft() {
@@ -50,7 +59,7 @@ function Home() {
           toast.error(dbAnnouncementUpdate.data.error)
         } else {
           setShowForm(false)
-          setAnnouncements([{title: title, body: text}, ...announcements]);
+          setAnnouncements([{title: title, body: text, id: dbAnnouncementUpdate.data._id}, ...announcements]);
           toast.success('New Announcement Added!')
         }
       } catch (error) {
@@ -59,9 +68,6 @@ function Home() {
     }
   }
 
-
-  const [hoveredAnnouncement, setHoveredAnnouncement] = useState(null);
-
   const handleMouseEnter = (id) => {
       setHoveredAnnouncement(id);
   };
@@ -69,6 +75,21 @@ function Home() {
   const handleMouseLeave = () => {
       setHoveredAnnouncement(null);
   };
+
+  const handleDelete = async (index) => {
+    try {
+      const response = await axios.delete('/deleteannouncement', {data: {title: announcements[index].title, text: announcements[index].body, _id: announcements[index].id}});
+
+      if(response.data.error) {
+          toast.error("An error occurred while deleting the event. Please try again.");
+      } else {
+          showData();
+          toast.success("Announcement Deleted!");
+      }
+    } catch (error) {
+        console.error(error);
+    }
+  }
 
 
   return (
