@@ -130,14 +130,26 @@ const getAnnouncement = async (req, res) => {
     }
 }
 
-const getMemberType = async (req, res) => {
+const getMemberEmails = async (req, res) => {
     try {
-        const data = await User.findOne({ role: /^Treasurer$/i });
-        res.json(data)
+        const users = await User.find({ role: /^Member$/i }); //Gets a list of all the members
+        const emails = users.map(user => user.email); //gets a list of all of the emails of every user in the database
+        res.json(emails)
     } catch (error) {
         console.log(error)
     }
 }
+
+const getFinances = async (req, res) => {
+    try {
+        const {mail} = req.body;
+        const info = await Finance.find({ email: new RegExp('^' + mail + '$', 'i') });
+        res.json(info);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
 
 
 module.exports = {
@@ -148,5 +160,6 @@ module.exports = {
     addAnnouncement,
     getAnnouncement,
     logoutUser,
-    getMemberType,
+    getMemberEmails,
+    getFinances
 }
