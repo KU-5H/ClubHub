@@ -3,14 +3,14 @@ import IncomeStatement from './IncomeStatement';
 import Payments from './Payments'
 import UnpaidDebts from './UnpaidDebts'
 import axios from "axios";
-import {UserContext} from '../../context/userContext'
+import {userContext} from '../../context/userContext'
 import { useState, useContext, useEffect, useRef} from "react";
 
 
 
 function Finances(){
 
-  const {user} = useContext(UserContext) //assigns the user and the role
+  const {user} = useContext(userContext) //assigns the user and the role
 
   const [loading, setLoading] = useState(true); //used to track whether the data is being fetched or not. True is the initial value of loading and the setLoading will be the function to change that
 
@@ -44,21 +44,10 @@ function Finances(){
     fetchData(); //calls the featch data function
   }, []); //The empty list tells react to only run this once
   
-  //creates a delay so that it has time to fetch the cookie
-  const delay = async () => {
-    try {
-      await new Promise(resolve => setTimeout(resolve, 100)); 
-      setLoading(false);
-    } catch (error) {
-      console.error("delay:", error);
-    }
-  };
-  delay();
+
 
   // While loading, display a loading indicator
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+
 
   return (
     <div className="finances">
@@ -78,7 +67,7 @@ function Finances(){
         </>
       )}
 
-      {user.role === 'Treasurer' && (
+      {user.role === 'Treasurer' || user.role === 'Admin' && (
         <>
          <p>Here's a list of all the members of the Club:</p>
           <ul>

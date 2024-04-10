@@ -165,6 +165,7 @@ const deleteAnnouncement = async (req, res) => {
 const getFinances = async (req, res) => {
     try {
         const {mail} = req.body;
+        console.log(req.body)
         const info = await Finance.find({ email: new RegExp('^' + mail + '$', 'i') });
         res.json(info);
     } catch (error) {
@@ -173,7 +174,6 @@ const getFinances = async (req, res) => {
 }
 
 
-=======
 const newCalenderEvent = async (req, res) => {
     const {title, text, startDateTime, endDateTime} = req.body;
 
@@ -286,7 +286,7 @@ module.exports = {
     getAnnouncement,
     logoutUser,
     getMemberEmails,
-    getFinances
+    getFinances,
     newCalenderEvent,
     getCalenderEvents,
     deleteEvent,

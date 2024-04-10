@@ -204,7 +204,7 @@ export default function AdminCalendar() {
                                 <button type="submit" className="announcement-option submit">Submit</button>
                             </div>
                         </form>
-                        )}
+                    )}
                     <div className='calender'>
                         <Calendar
                             localizer={localizer}
@@ -218,7 +218,6 @@ export default function AdminCalendar() {
                             }}
                         />
                     </div>
-                    
                 </div>) : (
                 <div className="unauthorized-container">
                     <div className="unauthorized-message"> Unauthorized!</div>
