@@ -147,6 +147,7 @@ body{
   border: 1px solid rgb(172, 172, 172);
   margin: 1em;
   width: 60em;
+
 }
 
 .announcement-container p {
@@ -186,6 +187,12 @@ body{
   height: 1em; 
   padding-bottom: 4px;
   padding-right: 1px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  border-color: black;
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .add-announcement:hover {
@@ -221,6 +228,7 @@ body{
   margin: 1.5em;
 }
 
+
 .new-announcement-textarea {
   font-size: 18px;
   resize: none;
@@ -228,6 +236,16 @@ body{
   padding: 0.7em;
   min-height: 9em;
   border: 1px solid rgb(196, 196, 196);
+}
+
+.cancel {
+  border-radius: 20px;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+.submit {
+  border-radius: 20px;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
 .cancel:hover {
@@ -693,6 +711,44 @@ Adding style to the unauthorized page in Home.jsx
   position: relative;
 }
 
+.calender-event {
+  position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.calender-event-textarea {
+  font-size: 18px;
+  resize: none;
+  width: 90%;
+  padding: 0.7em;
+  margin-bottom: 2em;
+  min-height: 9em;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.calender-event input {
+  font-size: 24px;
+  font-weight: 700;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #e4dcdc;
+  margin: 0.7em;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
 .calender {
   background-color: white;
   border-radius: 25px;
@@ -704,6 +760,7 @@ Adding style to the unauthorized page in Home.jsx
 
 .date-options {
   display: flex;
+  flex-direction: column;
   margin-top: 2em;
   align-items: center;
   gap: 2em;
@@ -712,24 +769,33 @@ Adding style to the unauthorized page in Home.jsx
 .calender-options {
   display: flex;
   justify-content: center;
-  width: 100%;
   gap: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.date-time-start-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.date-time-start-title {
+  font-size: 24px;
+  font-weight: 700;
 }
 
 .date-time-start {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1em;
-  width: 18em;
 }
 
 .date-time-end {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 1em;
-  width: 18em;
 }
 
 /* Modal Properties for both Calender and Logout */

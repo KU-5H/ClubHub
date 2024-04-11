@@ -177,26 +177,31 @@ export default function AdminCalendar() {
                         {user.role === 'Admin' && (<p className='add-announcement' onClick={() => makeEvent()}>+</p>)}
                     </div>
                     {showForm && (
-                        <form onSubmit={newEvent}  className="announcement-container">
+                        <form onSubmit={newEvent}  className="calender-event">
                             <input type="text" placeholder="Event Name..."/>
                             <textarea 
-                            key="text"
-                            placeholder="Event Description (optional)..." 
-                            className="new-announcement-textarea" 
+                                key="text"
+                                placeholder="Event Description (optional)..." 
+                                className="new-announcement-textarea" 
                             />
                             <div className='date-options'>
-                                <div className="date-time-start">
-                                    <LocalizationProvider className='' dateAdapter={AdapterDayjs}>
-                                        <DatePicker  label='Pick a Date...' value={eventData.startDate} onChange={(newValue) => setEventData({...eventData, startDate: newValue})}/>
-                                        <TimePicker  label='Select Time...' value={eventData.startTime} onChange={(newValue) => setEventData({...eventData, startTime: newValue})}/>
-                                    </LocalizationProvider>
+                                <div className='date-time-start-container'>
+                                    <div className='date-time-start-title'>Start Date</div>
+                                    <div className="date-time-start">
+                                        <LocalizationProvider className='' dateAdapter={AdapterDayjs}>
+                                            <DatePicker  label='Pick a Date...' value={eventData.startDate} onChange={(newValue) => setEventData({...eventData, startDate: newValue})}/>
+                                            <TimePicker  label='Select Time...' value={eventData.startTime} onChange={(newValue) => setEventData({...eventData, startTime: newValue})}/>
+                                        </LocalizationProvider>
+                                    </div>
                                 </div>
-                                <h2>to</h2>
-                                <div className='date-time-end'>
-                                    <LocalizationProvider className='dateEnd' dateAdapter={AdapterDayjs}>
-                                        <DatePicker label='Pick a Date...' value={eventData.endDate} onChange={(newValue) => setEventData({...eventData, endDate: newValue})} />
-                                        <TimePicker  label='Select Time...' value={eventData.endTime} onChange={(newValue) => setEventData({...eventData, endTime: newValue})}/>
-                                    </LocalizationProvider>
+                                <div className='date-time-start-container'>
+                                    <div className='date-time-start-title'>End Date</div>
+                                    <div className='date-time-end'>
+                                        <LocalizationProvider className='dateEnd' dateAdapter={AdapterDayjs}>
+                                            <DatePicker label='Pick a Date...' value={eventData.endDate} onChange={(newValue) => setEventData({...eventData, endDate: newValue})} />
+                                            <TimePicker  label='Select Time...' value={eventData.endTime} onChange={(newValue) => setEventData({...eventData, endTime: newValue})}/>
+                                        </LocalizationProvider>
+                                    </div>
                                 </div>
                             </div>
                             <div className="calender-options">
@@ -263,7 +268,7 @@ export default function AdminCalendar() {
             </Modal>
             {showUpdateForm && (
                 <div>
-                    <form onSubmit={updateEvents} className="announcement-container">
+                    <form onSubmit={updateEvents} className="calender-event">
                                 <input defaultValue={selectedEvent.title} type="text" placeholder="Event Name..."/>
                                 <textarea 
                                 defaultValue={selectedEvent.desc}
