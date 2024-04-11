@@ -14,6 +14,7 @@ function Home() {
 
   const [announcements, setAnnouncements] = useState([]);
   const [showForm, setShowForm] = useState(false);
+  
   const [hoveredAnnouncement, setHoveredAnnouncement] = useState(null);
 
   useEffect(() => {

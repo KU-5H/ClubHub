@@ -843,3 +843,11 @@ Adding style to the unauthorized page in Home.jsx
     height: 65vh;
   }
 }
+
+/* End of Aspect Page for different screen sizes */
+
+/* Start of Finances Page */
+.payments {
+  display: flex;
+  flex-wrap: wrap;
+}

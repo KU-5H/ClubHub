@@ -53,7 +53,8 @@ export function UserContextProvider({children}) {
             console.log(error);
         }
     };
-    
+
+
     const [isFetching, setIsFetching] = useState(true); 
 
     useEffect(() => { 
