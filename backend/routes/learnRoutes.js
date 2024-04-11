@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const cors = require('cors')
-const {test, registerUser, loginUser, logoutUser, getProfile, addAnnouncement, getAnnouncement, getMemberEmails, getFinances} = require('../controllers/controller')
+const {test, registerUser, loginUser, logoutUser, getProfile, addAnnouncement, getAnnouncement, getMemberEmails, getAllFinanceUsers, addFundsToAll, getUserFinance, userPayment} = require('../controllers/controller')
 
 // middleware
 router.use(
@@ -19,6 +19,10 @@ router.get('/profile', getProfile)
 router.post('/announcement', addAnnouncement)
 router.get('/announcementget', getAnnouncement)
 router.get('/getMemberEmails',getMemberEmails)
-router.get('/getFinances',getFinances)
+router.get('/getAllFinanceUsers',getAllFinanceUsers)
+router.post('/addFundsToAll',addFundsToAll)
+router.get('/getUserFinance', getUserFinance)
+router.post('/userPayment', userPayment)
+
 
 module.exports = router
