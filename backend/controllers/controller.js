@@ -1,8 +1,10 @@
 const User = require('../models/user');
 const Announcement = require('../models/announcements')
 const Finance = require('../models/finance')
+const Calender = require('../models/calender')
 const { hashPassword, comparePassword } = require('../helpers/auth');
 const jwt = require('jsonwebtoken');
+const dayjs = require('dayjs');
 
 const test = (req, res) => {
     res.json('test is working')
@@ -72,7 +74,7 @@ const loginUser = async (req, res) => {
             })
         } else {
             res.json({
-                error: "Passwords don't match"
+                error: "Password is incorrect"
             })
         }
     } catch (error) {
@@ -114,6 +116,7 @@ const addAnnouncement = async (req, res) => {
         const announcement = await Announcement.create({
             title, text
         })
+        
 
         return res.json(announcement)
     } catch (error) {
@@ -140,10 +143,37 @@ const getMemberEmails = async (req, res) => {
     }
 }
 
+
 const getAllFinanceUsers = async (req, res) => {
     try {
         const allUsers = await Finance.find({}); //gets the a list of the the finance entries in the database
         res.json(allUsers)
+
+const deleteAnnouncement = async (req, res) => {
+    const data = req.body;
+    try {
+
+        if (!data._id) {
+            return res.json({
+                error: "No data found"
+            })
+        }
+
+        const announcement = await Announcement.findOneAndDelete({_id: data._id})
+
+        return res.json(announcement)
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+const getFinances = async (req, res) => {
+    try {
+        const {mail} = req.body;
+        console.log(req.body)
+        const info = await Finance.find({ email: new RegExp('^' + mail + '$', 'i') });
+        res.json(info);
     } catch (error) {
         console.log(error)
     }
@@ -195,6 +225,108 @@ const userPayment = async (req, res) => {
 };
 
 
+const newCalenderEvent = async (req, res) => {
+    const {title, text, startDateTime, endDateTime} = req.body;
+
+    try {
+        if (!title) {
+            return res.json({
+                error: "Title Needed!"
+            })
+        }
+
+        if(!startDateTime) {
+            return res.json({
+              error: "Start date needed!"
+            })
+          }
+      
+        if(!endDateTime) {
+            return res.json({
+              error: "End date needed!"
+            })
+        }
+
+        if(dayjs(startDateTime).isAfter(dayjs(endDateTime))) {
+            return res.json({
+                error: "End date must be after start date"
+            })
+        }
+
+        const calender = await Calender.create({
+            text, title, startDate: startDateTime, endDate: endDateTime
+        })
+
+        return res.json(calender)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+getCalenderEvents = async (req, res) => {
+    try {
+        const data = await Calender.find({});
+        res.json(data)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+deleteEvent = async (req, res) => {
+    try {
+        const data = req.body;
+
+        if (!data) {
+            return res.json({
+                error: "No data found"
+            })
+        } else {
+            const event = await Calender.findOneAndDelete({_id: data._id})
+            res.json(event)
+        }
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+updateEvent = async (req, res) => {
+    const {title, text, start, end, _id} = req.body;
+
+    try {
+        if (!title) {
+            return res.json({
+                error: "Title Needed!"
+            })
+        }
+
+        if(!start) {
+            return res.json({
+              error: "Start date needed!"
+            })
+          }
+      
+        if(!end) {
+            return res.json({
+              error: "End date needed!"
+            })
+        }
+
+        if(dayjs(start).isAfter(dayjs(end))) {
+            return res.json({
+                error: "End date must be after start date"
+            })
+        }
+
+        const event = await Calender.findOneAndUpdate({_id: _id}, {
+            text, title, startDate: start, endDate: end
+        })
+
+        return res.json(event)
+    } catch (error) {
+        console.log(error)
+    }
+
+}
 
 module.exports = {
     test,
@@ -209,4 +341,10 @@ module.exports = {
     addFundsToAll,
     getUserFinance,
     userPayment
+    getFinances,
+    newCalenderEvent,
+    getCalenderEvents,
+    deleteEvent,
+    updateEvent,
+    deleteAnnouncement,
 }

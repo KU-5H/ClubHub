@@ -2,23 +2,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=JetBrains+Mono&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
 * {
   padding: 0;
   margin: 0;
   text-decoration: none;
   list-style: none;
   box-sizing: border-box;
-  font-family: "Poppins"
+  font-family: "Poppins";
+}
+
+
+
+body{
+  background-color: #d7effe;   
 }
 
 /* Nav Bar Area*/
 
 .nav-bar {
+  background-color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
+  justify-content: space-evenly;
   margin: auto;
+  padding: 5px;
+  width: 100%;
   border-bottom: 1px solid rgb(196, 196, 196);
 }
 
@@ -46,7 +55,7 @@
 }
 
 .nav-bar li {
-  font-size: 22px;
+  font-size: 18px;
   padding: 1em;
   border: 1px solid transparent;
   list-style-type: none;
@@ -59,12 +68,66 @@
 .nav-bar a {
   color: black;
 }
+
+.logout-form {
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: white;
+  border: 1px solid rgb(172, 172, 172);
+  display: grid;
+  width: 35%;
+  grid-template-rows: auto auto;
+}
+
+.logout-title {
+  grid-column: 1/3;
+  font-size: 2em;
+  padding: 1em;
+  font-weight: bold;
+  text-align: center;
+}
+
+.logout-button {
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-bottom: 3em;
+  grid-row: 2;
+  background: none;
+  border: 1px solid #e4dcdc;
+  font-size: 20px;
+  padding: 0.8em;
+  width: 7em;
+}
+
+.out {
+  grid-column: 2;
+}
+
+.out:hover {
+  background-color: rgb(74, 183, 255);
+}
+
+.notOut {
+  grid-column: 1;
+} 
+
+.notOut:hover {
+  background-color: rgb(248, 76, 76);
+}
+
+
+
 /* Nav Bar Area End */
 
 
 /* Home/Announcements Page */
 
 .announcements-page {
+  background-color: white;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -76,6 +139,8 @@
 }
 
 .announcement-container {
+  position: relative;
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -176,9 +241,34 @@
   color: white;
   cursor: pointer;
 }
+
+.icons-container {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.edit-icon:hover {
+  color: rgb(74, 183, 150);
+}
+
+.edit-icon:active {
+  color: rgb(49, 119, 49);
+}
+
+.delete-icon:hover {
+  color: rgb(248, 76, 76);
+}
+
+.delete-icon:active {
+  color: rgb(131, 19, 19);
+}
+
 /* End of Announcements page */
 
 /* Finances Page */
+
+.finances 
 
 .finances-categories {
   display: flex;
@@ -259,6 +349,7 @@
 /* End of income statement and debts page */
 
 /* About page */
+
 .about-section {
   display: flex;
   flex-direction: column;
@@ -306,49 +397,449 @@
   width: 65%;
 }
 
+.about-buttons {
+  display: flex;
+  width: 100%;
+}
+
+.about-button {
+  width: 100%;
+  height: 150px;
+  font-size: 15px;
+  background-color: #d7effe;
+  border-radius: 10px;
+  border-color: #0e1011;
+  cursor: pointer;
+  font-size: 50px;
+  padding: 20px;
+}
+
+button:active {
+  background-color: rgb(74, 183, 255);
+  color: white;
+}
+
+.announcement-options {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  gap: 2em;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /* End of about page*/
 
 /* Login Page */
 .login-page{
   display: flex;
-  background-color: #d7effe;
-  margin-top: 0;
-  margin-left: 0;   
-  height: 88.88vh;
+  background-color: #d7effe;   
   justify-content: center;
-
 }
 
 .login-bar{
-  margin-top: 150px;
-  width: 10em;
-  border-radius: 15px;
+  margin-top: 10vh;
+  width: 500px;
+  height: 40vh;
+  border-radius: 10px;
   background-color: white;
-  text-align: center;
+  text-align: left;
+  padding: 3vh;
   font-family: 'Poppins', sans-serif;
-  font-size: 50px; 
-  padding-bottom: 30px;
+  font-size: 14px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.login-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
 }
 
 .login-enter-area{
-  
-  margin-top: 0px;
-  padding: 10px 15px;
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
   font-size: 16px;
   cursor: pointer;
-  border-radius: 20px;
+  border-radius: 9px;
   font-family: 'Poppins';
   border-color: black;
+  border-width: 1px;
 }
 
 .login-submit{
-  width: 100px;
+  width: 100%;
   height: 40px;
   margin-top: 29px;
   font-size: 15px;
-  background-color: #FFD4B2;
+  background-color: rgb(74, 183, 255);
   border-radius: 10px;
   border:none;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-submit:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.login-submit:active {
+  background-color: rgb(74, 183, 150);
+  
+}
+
+/* end of login page */
+
+/* Register Page */
+.register-title {
+  font-size: 50px;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+.register-page {
+  display: flex;
+  justify-content: center;
+
+}
+
+.register-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 10vh;
+  width: 500px;
+  height: 55vh;
+  border-radius: 10px;
+  background-color: white;
+  text-align: left;
+  padding: 3vh;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px; 
+}
+
+.register-elements {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+}
+
+.register-enter-area {
+  width: 100%;
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 9px;
+  font-family: 'Poppins';
+  border-color: rgb(0, 0, 0);
+  border-width: 1px;
+}
+
+.register-page h1 {
+  text-align: center;
+  font-size: 25px;
+  padding-top: 10px;
+  font-family: 'Poppins', sans-serif; 
+}
+
+.roles-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1vh;
+}
+
+
+.register-role {
+  text-align: center;
+  font-size: 25px;
+}
+
+.register-button {
+  width: 100%;
+  height: 40px;
+  margin-top: 29px;
+  font-size: 15px;
+  background-color: rgb(74, 183, 255);
+  border-radius: 10px;
+  border:none;
+  font-family: 'Poppins';
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.register-button:active {
+  background-color: rgb(74, 183, 150);
+  color: white;
+}
+
+.selected {
+  background-color: rgb(74, 183, 255);
+}
+
+
+.role-button{
+  width: 100%;
+  height: 40px;
+  font-size: 15px;
+  border-radius: 10px;
+  border: none;
+  font-family: 'Poppins';
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-family: 'Poppins';
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.role-button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.role-button:active {
+  background-color: rgb(74, 183, 150);
+}
+
+
+
+/* End of Register Page */
+
+/* 
+Adding style to the unauthorized page in Home.jsx
+*/
+
+.unauthorized-container {
+  background-color: #d7effe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Minimum height to take up the full viewport height */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  position: relative; 
+}
+
+.unauthorized-message {
+  font-weight: bold;
+  font-size: 50px; /* Adjust the size as needed */
+  color: #000000; /* Adjust the color as needed */
+  margin-bottom: 20px; /* Spacing between this message and the next */
+}
+
+.message{
+  font-size: 20px;
+  margin-bottom: 20px;
+  color:#000000
+
+}
+
+.unauthorized-container a {
+  color: #1a0dab; /* Typically hyperlink blue */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.unauthorized-container a:hover {
+  text-decoration: underline; /* Adds underline on hover for better UX */
+}
+
+/* End of unauthorized page */
+
+/* Start of Calender Page*/
+.calender-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #d7effe;
+  min-height: 80vh;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.calender {
+  background-color: white;
+  border-radius: 25px;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-options {
+  display: flex;
+  margin-top: 2em;
+  align-items: center;
+  gap: 2em;
+}
+
+.calender-options {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 1em;
+}
+
+.date-time-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  width: 18em;
+}
+
+.date-time-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1em;
+  width: 18em;
+}
+
+/* Modal Properties for both Calender and Logout */
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30em;
+  animation: fadeIn ease 0.5s;
+}
+
+.modal-calender {
+  height: 30em;
+}
+
+.modal button {
+  width: 100%;
+  height: 40px;
+  margin-top: 29px;
+  font-size: 15px;
+  background-color: rgb(74, 183, 255);
+  border-radius: 10px;
+  border: none;
+  font-family: 'Poppins';
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+.modal button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.modal button:active {
+  background-color: rgb(74, 183, 150);
+  color: white;
+}
+
+.modal-button {
+  display: flex;
+  gap: 2em;
+}
+
+.modal-button .confirm {
+  background-color:rgb(248, 76, 76);
+  color: white;
+}
+
+.eventButtons {
+  display: flex;
+  width: 60%;
+  justify-content: flex-end;
+  gap: 3px;
+}
+
+.eventButtons button {
+  height: 35px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.eventButtons .update {
+  background-color: rgb(93, 226, 93);
+}
+
+.eventButtons .update:hover {
+  background-color: rgb(70, 170, 70);
+  color: white;
+}
+
+.eventButtons .update:active {
+  background-color: rgb(49, 119, 49);
+  color: white;
+}
+
+.eventButtons .delete {
+  background-color: rgb(248, 76, 76);
+}
+
+.eventButtons .delete:hover {
+  background-color: rgb(200, 30, 30);
+  color: white;
+}
+
+.eventButtons .delete:active {
+  background-color: rgb(131, 19, 19);
+  color: white;
+}
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* End of Calender Page */
+
+/* Start of Aspect Page for different screen sizes */
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+  .login-bar {
+    height: 50vh;
+  }
+  .register-bar {
+    height: 65vh;
+  }
 }

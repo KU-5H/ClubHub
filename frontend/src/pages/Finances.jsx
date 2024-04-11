@@ -6,8 +6,6 @@ import axios from "axios";
 import { UserContext } from '../../context/userContext'
 import { useState, useContext, useEffect, useRef } from "react";
 
-
-
 function Finances() {
 
   const { user } = useContext(UserContext) //assigns the user and the role
@@ -58,11 +56,8 @@ function Finances() {
       } catch (error) {
         console.error("Error fetching data:", error);
       }
-    };
-
-    fetchData();
+    }; fetchData();
   }, []);
-
 
  /**
   * Function used to process the submit button for the TREASURER version of the page
@@ -77,7 +72,6 @@ function Finances() {
     } catch (error) {
       console.error('Error updating payment:', error);
     }
-
   };
 
 //----------------------------------------------------------------------------------------
@@ -119,14 +113,7 @@ function Finances() {
   };
 
 
-
-
   // While loading, display a loading indicator
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-
   return (
     <div className="finances">
       {user.role === 'Member' && (
@@ -162,7 +149,7 @@ function Finances() {
         </>
       )}
 
-      {user.role === 'Treasurer' && (
+      {user.role === 'Treasurer' || user.role === 'Admin' && (
         <>
           <center>
             <p>Welcome {user.name}</p>
