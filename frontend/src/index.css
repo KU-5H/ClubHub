@@ -851,3 +851,13 @@ Adding style to the unauthorized page in Home.jsx
   display: flex;
   flex-wrap: wrap;
 }
+
+.finance-option {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  text-align: center;
+  border: 1px solid #e4dcdc;
+  margin-bottom: 1em;
+}
+

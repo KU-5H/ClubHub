@@ -148,6 +148,10 @@ const getAllFinanceUsers = async (req, res) => {
     try {
         const allUsers = await Finance.find({}); //gets the a list of the the finance entries in the database
         res.json(allUsers)
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 const deleteAnnouncement = async (req, res) => {
     const data = req.body;
@@ -204,7 +208,7 @@ const addFundsToAll = async (req, res) => {
 const getUserFinance = async (req, res) => {
     try {
         const { mail } = req.body;
-        const user = await Finance.findOne({ mail });
+        const user = await Finance.findOne({email: mail});
         res.json(user);
     } catch (error) {
         console.error(error);
@@ -212,17 +216,58 @@ const getUserFinance = async (req, res) => {
     }
 }
 
-
-
 const userPayment = async (req, res) => {
     try {
-        const email = req.body.email; //email is passed in as a parameter
-        const funds = parseInt(req.body.amount); //amount to decrement is passed in as a paramter
-        await Finance.findOneAndUpdate({ email: email }, { $inc: { unpaidDebt: -funds } }); //decrements the funds from the user identified by the email
+        const { mail, amount } = req.body;
+
+        if(!amount) {
+            return res.json({
+                error: "Amount Needed!"
+            })
+        }
+
+        if (isNaN(amount)) {
+            return res.json({
+                error: "Amount must be a number"
+            });
+        }
+
+        const payment = await Finance.findOneAndUpdate({ email: mail }, { 
+            $inc: { unpaidDebt: -amount },
+            $push: { paymentsMade: amount }
+        },  ); //decrements the unpaidDebt by the amount from the user identified by the email
+        return res.json(payment);
     } catch (error) {
+        console.error(error);
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
+const addSinglePayment = async (req, res) => {
+    try {
+        const { mail, amount } = req.body;
+
+        if(!amount) {
+            return res.json({
+                error: "Amount Needed!"
+            })
+        }
+
+        if (isNaN(amount)) {
+            return res.json({
+                error: "Amount must be a number"
+            });
+        }
+
+        const payment = await Finance.findOneAndUpdate({ email: mail }, { 
+            $inc: { unpaidDebt: +amount },
+        },  ); //decrements the unpaidDebt by the amount from the user identified by the email
+        return res.json(payment);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+}
 
 
 const newCalenderEvent = async (req, res) => {
@@ -340,11 +385,12 @@ module.exports = {
     getAllFinanceUsers,
     addFundsToAll,
     getUserFinance,
-    userPayment
+    userPayment,
     getFinances,
     newCalenderEvent,
     getCalenderEvents,
     deleteEvent,
     updateEvent,
     deleteAnnouncement,
+    addSinglePayment,
 }

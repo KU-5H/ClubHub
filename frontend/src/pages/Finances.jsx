@@ -8,6 +8,7 @@ import { useState, useContext, useEffect, useRef } from "react";
 import { toast } from "react-hot-toast";
 import { v4 as uuidv4 } from 'uuid';
 
+
 function Finances() {
 
   const { user } = useContext(userContext) //assigns the user and the role
@@ -19,6 +20,9 @@ function Finances() {
   const [userInfo, setUserInfo] = useState();
 
   const [paymentAmount, setPaymentAmount] = useState('');
+
+  const [hoveredAnnouncement, setHoveredAnnouncement] = useState(null);
+  const [userPayment, setUserPayment] = useState(null);
 
   /**
    * Delay which is a naive fix to the cookie problem, however it doesn't work well
@@ -92,9 +96,52 @@ function Finances() {
     }
   };
 
-  const showMemberPayments = (payment) => {
-    console.log(payment)
-  }
+  const UserPayment = ({ finance }) => {
+    const [userPayment, setUserPayment] = useState('');
+  
+    const handlePaymentSubmit = async (e) => {
+      e.preventDefault();
+      console.log(userPayment);
+      console.log(finance.email);
+  
+      try {
+        const response = await axios.put('/addSinglePayment', {mail: finance.email, amount: userPayment});
+  
+        if(response.data.error) {
+          toast.error(response.data.error);
+        } else {
+          toast.success('Updated Funds!');
+          setUserPayment('');
+          fetchData();
+        }
+      } catch (error) {
+        console.error('Error updating payment:', error);
+      }
+      // handle the payment submission here
+      // you might need to lift this function up or use a context
+    };
+  
+    return (
+      <li> 
+        <p>Email: {finance.email}</p>
+        <p>Unpaid Debt: {finance.unpaidDebt}</p>
+        <div>Payments Made: {finance.paymentsMade.map((item, index) => (
+          <span key={index}>{item} </span>
+        ))}</div>
+        <form onSubmit={handlePaymentSubmit}>
+          <input
+            type="text"
+            className="finance-option submit"
+            placeholder={`Add Payment for ${finance.email}`}
+            value={userPayment}
+            onChange={(e) => setUserPayment(e.target.value)}
+          />
+          <button type="submit" className="finance-option submit">Update</button>
+        </form>
+      </li>
+    );
+  };
+  
 
 //----------------------------------------------------------------------------------------
   /**
@@ -147,6 +194,16 @@ function Finances() {
     }
   }
 
+  const handleMouseEnter = (id) => {
+    setHoveredAnnouncement(id);
+  };
+
+  const handleMouseLeave = () => {
+      setHoveredAnnouncement(null);
+  };
+
+  
+
 
   // While loading, display a loading indicator
   return (
@@ -188,21 +245,14 @@ function Finances() {
             <br></br>
             <ul>
               {information.map((finance, index) => (
-                <li key={index}>
-                  <p>Email: {finance.email}</p>
-                  <p>Unpaid Debt: {finance.unpaidDebt}</p>
-                  <div>Payments Made: {finance.paymentsMade.map((item, index) => (
-                    <span key={index}>{item} </span>
-                  ))}</div>
-                  <br></br>
-                </li>
+                <UserPayment key={index} finance={finance} />
               ))}
             </ul>
             <form onSubmit={handleTreasurerSubmit}>
               <input
                 type="text"
                 className="announcement-option submit"
-                placeholder="Add Payment"
+                placeholder="Add Payment For Everyone"
                 value={paymentAmount}
                 onChange={(e) => setPaymentAmount(e.target.value)}
               />
