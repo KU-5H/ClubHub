@@ -1,15 +1,15 @@
 // contains info about what the club is about 
 // Contains information about schedule of events coming up, location, and a way to contact, organization
 
-import location from './../assets/location.png';
-import schedule from './../assets/schedule.png';
 import announcement from './../assets/announcement.png';
 import calender from './../assets/calender.png';
 import finances from './../assets/finances.png';
 import userFinance from './../assets/userFinance.png';
+import user2 from './../assets/user.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import {userContext} from '../../context/userContext'
+import { animateScroll as scroll } from 'react-scroll';
 
 export default function About() {
   const {user} = useContext(userContext)
@@ -18,7 +18,15 @@ export default function About() {
     if(user) {
       navigate('/home')
     }
+    window.scrollTo(0, window.innerHeight * 0.13);
+    setTimeout(() => {
+      document.getElementById('arrow').style.display = 'block';
+
+    }, 3000);
   })
+
+  
+const nextSectionRef = useRef();
 
   const login = () => {
     navigate('/login')
@@ -30,23 +38,26 @@ export default function About() {
 
     return (
       <div className="about-section">
-        <div className="about-category-2 blue">
+        <div className='about-category-4 blue'>
           <div>
-            <h1>Clubhub</h1>
-            <p>The one and only club managment site you will ever need! </p><br />
+            <h2 className='announcement-h2'>ClubHub</h2>
+            <p>The one and only club managment site you will ever need!</p>
             <div className='about-buttons'>
               <button className='about-button' onClick={register}>Get Started</button>
             </div>
           </div>
+          <img className='about-image2 about-category-2-right' src={user2}/>
+          <div id="arrow" className="arrow" style={{display: 'none'}} onClick={() => scroll.scrollTo(nextSectionRef.current.offsetTop)}>
+            <i className="fas fa-arrow-down">↓</i>
+          </div>
         </div>
-        <div className="about-category">
+        <div className="about-category" ref={nextSectionRef}>
           <h2>What does ClubHub Offer?</h2>
-          <br />
           <p>ClubHub is a club management site that allows you to manage all your clubs in one place. It offers a variety of features such as:</p>
           <div className='about-images'>
               <img className='about-image' src={announcement}/>
               <img className='about-image' src={calender}/>
-              <img className='about-image' src={schedule}/>
+              <img className='about-image' src={userFinance}/>
           </div>
         </div>
         <div className="about-category blue">
@@ -69,6 +80,14 @@ export default function About() {
               can even see their payments and make payments straight from the app.</p>
             </div>
         </div>
+        <div className="about-category">
+          <h2>So What Are You Waiting For?</h2>
+          <p className='announcement-p'>Get started with ClubHub today by singing up! </p>
+          <button className='about-button' onClick={register}>Get Started</button>
+        </div>
+        <footer >
+          <div>Updated and Maintained at <a href="https://github.com/KU-5H/ClubHub" target='_blank'>ClubHub's Github</a></div>
+        </footer>
       </div>
     );
   }

@@ -1,10 +1,14 @@
 import axios from 'axios';
 import React from 'react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import mountain from './../assets/mountain.jpg'
+import { RiQuestionnaireLine } from "react-icons/ri";
+import logo from './../assets/logo.png'
 
-export default function Register() {
+export default function Register({ setShowNavbar, setShowFooter }) {
     const nav = useNavigate()
     const [data, setData] = useState({
         name: '',
@@ -17,6 +21,16 @@ export default function Register() {
         unpaidDebt: 0,
         paymentsMade: [],
     })
+
+    useEffect(() => {
+        setShowNavbar(false);
+        setShowFooter(false);
+    
+        return () => {
+          setShowNavbar(true);
+          setShowFooter(true);
+        };
+      }, []);
     
     const refOne = useRef(null);
     const refTwo = useRef(null);
@@ -81,8 +95,11 @@ export default function Register() {
 
     return (
         <div className='register-page'>
-            <center>
             <form className='register-bar' onSubmit={handleRegister}>
+                <div className='login-navbar login-logo'>
+                    <img className='logo-icon' src={logo} alt="" />
+                    <Link to='/'><li className='login-link'><RiQuestionnaireLine /> About</li></Link>
+                </div>
             <div className='register-title'>Register</div>
             <div className='register-elements'>
                 <div className='register-name'>
@@ -104,9 +121,10 @@ export default function Register() {
                 <button type='button' ref={refTwo} className='role-button' onClick={() => setRole(2)}>Treasurer</button>
                 <button type='button' ref={refThree} className='role-button' onClick={() => setRole(3)}>Admin</button>
             </div>
-            <button type='submit' className='register-button'>Register</button>  
+            <button type='submit' className='register-button'>Register</button> 
+            <div className='register-redirect'>Already have an Account? <Link to="/login" className='register-text'>Login</Link> here!</div>
             </form>
-            </center>
-        </div>  
+            <img className='login-image' src={mountain}/>
+        </div>   
     )
 }
