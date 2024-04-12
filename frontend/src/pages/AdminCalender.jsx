@@ -216,7 +216,7 @@ export default function AdminCalendar() {
                             events={event}
                             startAccessor="start"
                             endAccessor="end"
-                            style={{ height: 600, width: '90%',  margin: '50px', fontFamily: 'Poppins'}}
+                            style={{ height: 600, width: '90%', maxWidth: '1200px', margin: '50px', fontFamily: 'Poppins'}}
                             onSelectEvent={event => {
                                 setSelectedEvent(event);
                                 setModalIsOpen(true);
