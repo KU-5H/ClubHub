@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from 'react';
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import { userContext } from '../../context/userContext'
+import { Link } from 'react-router-dom';
 
 export default function Login() {
     const {user, login} = useContext(userContext)
@@ -12,8 +13,6 @@ export default function Login() {
         email: '',
         password: '',
     })
-
-
 
     const handleLogin = async (e) => {
         e.preventDefault()
@@ -24,7 +23,6 @@ export default function Login() {
             console.log(error)
         }
     }
-    
 
     return (
         <div className="login-page">
@@ -43,8 +41,10 @@ export default function Login() {
                         <input className="login-enter-area" type="password" placeholder='Enter Password' value={data.password} onChange={(e) => setData({...data, password: e.target.value})}/>
                     </div>
                 </div>
-                <div></div>
-                <button className="login-submit" type='submit'>Login</button>
+                <div className='login-submitor'>
+                    <button className="login-submit" type='submit'>Login</button>
+                    <div className='register-redirect'>Don't have an account? <Link to="/register" className='register-text'>Register</Link> here!</div>
+                </div>
             </form>
             </center>
         </div>

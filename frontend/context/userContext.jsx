@@ -46,16 +46,15 @@ export function UserContextProvider({children}) {
     const logout = async () => {
         try {
             await axios.get('/logout');
-            toast.success('Logout Successful! Will now try to automatically reload page..', {duration: 3000})
-            navigate('/login')
-            setTimeout(function () { 
-                window.location.reload();
-            }, 3000);
+            setUser(null);
+            toast.success('Logout Successful!', {duration: 3000});
+            navigate('/login');
         } catch (error) {
             console.log(error);
         }
     };
-    
+
+
     const [isFetching, setIsFetching] = useState(true); 
 
     useEffect(() => { 

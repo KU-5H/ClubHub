@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=JetBrains+Mono&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
+
 * {
   padding: 0;
   margin: 0;
@@ -9,12 +10,14 @@
   list-style: none;
   box-sizing: border-box;
   font-family: "Poppins";
-
 }
+
+
 
 body{
   background-color: #d7effe;   
 }
+
 
 /* Nav Bar Area*/
 
@@ -25,6 +28,7 @@ body{
   justify-content: space-evenly;
   margin: auto;
   padding: 5px;
+  width: 100%;
   border-bottom: 1px solid rgb(196, 196, 196);
 }
 
@@ -52,7 +56,7 @@ body{
 }
 
 .nav-bar li {
-  font-size: 22px;
+  font-size: 18px;
   padding: 1em;
   border: 1px solid transparent;
   list-style-type: none;
@@ -128,6 +132,7 @@ body{
   display: flex;
   align-items: center;
   flex-direction: column;
+  min-height: 90.8vh;
 }
 
 .pages-title {
@@ -136,6 +141,7 @@ body{
 }
 
 .announcement-container {
+  position: relative;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -143,6 +149,7 @@ body{
   border: 1px solid rgb(172, 172, 172);
   margin: 1em;
   width: 60em;
+
 }
 
 .announcement-container p {
@@ -182,6 +189,12 @@ body{
   height: 1em; 
   padding-bottom: 4px;
   padding-right: 1px;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+  border-color: black;
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 .add-announcement:hover {
@@ -217,6 +230,7 @@ body{
   margin: 1.5em;
 }
 
+
 .new-announcement-textarea {
   font-size: 18px;
   resize: none;
@@ -224,6 +238,16 @@ body{
   padding: 0.7em;
   min-height: 9em;
   border: 1px solid rgb(196, 196, 196);
+}
+
+.cancel {
+  border-radius: 20px;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
+}
+
+.submit {
+  border-radius: 20px;
+  transition: background-color 0.1s ease-in-out, color 0.1s ease-in-out;
 }
 
 .cancel:hover {
@@ -237,6 +261,29 @@ body{
   color: white;
   cursor: pointer;
 }
+
+.icons-container {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.edit-icon:hover {
+  color: rgb(74, 183, 150);
+}
+
+.edit-icon:active {
+  color: rgb(49, 119, 49);
+}
+
+.delete-icon:hover {
+  color: rgb(248, 76, 76);
+}
+
+.delete-icon:active {
+  color: rgb(131, 19, 19);
+}
+
 /* End of Announcements page */
 
 /* Finances Page */
@@ -322,12 +369,42 @@ body{
 /* End of income statement and debts page */
 
 /* About page */
-
 .about-section {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
+.about-category-1 {
+  height: 72em;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 10em;
+  flex-direction: column;
+}
+
+.about-category-2 {
+  height: 72em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5em;
+  gap: 1em;
+}
+
+.about-category-3 {
+  height: 80em;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5em;
+  gap: 2em;
+}
+
 
 .about-category {
   height: 72em;
@@ -335,25 +412,54 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 10em;
   flex-direction: column;
 }
 
 .about-section p {
-  font-size: 3em;
-  width: 50%;
+  font-size: 2em;
+  width: 75%;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-bottom: 1em;
 }
 
+.about-section h1 {
+  font-size: 8em;
+  color: white;
+}
+
+.about-section h2 {
+  font-size: 6em;
+}
+
+.announcement-h2 {
+  font-size: 2em;
+  color: white;
+}
+
+.announcement p {
+  width: 100%;
+}
+
 .about-category div {
-  font-size: 3em;
+  font-size: 2em;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 1em;
+}
+
+.about-announcment {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-announcment div {
+  font-size: 10px;
 }
 
 
@@ -366,40 +472,52 @@ body{
   color: white;
 }
 
-.about-image {
-  width: 65%;
+.about-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 1em;
 }
 
-.about-buttons {
+.about-image {
   display: flex;
-  width: 100%;
+  width: 65%;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 20px;
 }
+
 
 .about-button {
-  width: 100%;
-  height: 150px;
-  font-size: 15px;
-  background-color: #d7effe;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+  background-color: #363c3f;
+  color: white;
   border-radius: 10px;
-  border-color: #0e1011;
   cursor: pointer;
-  font-size: 50px;
+  font-size: 3em;
   padding: 20px;
+  transition: color 0.3s ease, background-color 0.3s ease;
 }
 
-button:active {
+.about-button:hover {
+  background-color: rgb(23, 196, 196);
+  color: white;
+}
+
+.about-button:active {
   background-color: rgb(74, 183, 255);
   color: white;
 }
 
-.about-section button {
-  margin-left: 1em;
+.announcement-options {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  gap: 2em;
 }
-
-
-
-
-
 
 
 
@@ -412,27 +530,32 @@ button:active {
 
 /* Login Page */
 .login-page{
-  display: flex;
-  background-color: #d7effe;   
+  display: flex; 
   justify-content: center;
 }
 
 .login-bar{
   margin-top: 10vh;
   width: 500px;
-  height: 350px;
+  height: 40vh;
   border-radius: 10px;
   background-color: white;
+  color: black;
   text-align: left;
   padding: 3vh;
   font-family: 'Poppins', sans-serif;
   font-size: 14px; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
 }
 
 .login-title {
   font-size: 50px;
   font-weight: bold;
   text-align: center;
+  justify-self: flex-start;
 }
 
 .login-elements {
@@ -463,12 +586,38 @@ button:active {
   border:none;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-submitor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1vh;
+}
+
+.register-redirect {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 1em;
+}
+
+.login-submit:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.login-submit:active {
+  background-color: rgb(74, 183, 150);
+  
 }
 
 /* end of login page */
 
 /* Register Page */
 .register-title {
+  color: black;
   font-size: 50px;
   font-weight: bold;
   text-align: center;
@@ -478,6 +627,7 @@ button:active {
 .register-page {
   display: flex;
   justify-content: center;
+
 }
 
 .register-bar {
@@ -531,6 +681,7 @@ button:active {
   gap: 1vh;
 }
 
+
 .register-role {
   text-align: center;
   font-size: 25px;
@@ -546,6 +697,17 @@ button:active {
   border:none;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.register-button:active {
+  background-color: rgb(74, 183, 150);
+  color: white;
 }
 
 .selected {
@@ -567,23 +729,351 @@ button:active {
   font-size: 15px;
   font-family: 'Poppins';
   cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.role-button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
+
+.role-button:active {
+  background-color: rgb(74, 183, 150);
 }
 
 
 
 /* End of Register Page */
 
+/* 
+Adding style to the unauthorized page in Home.jsx
+*/
+
+.unauthorized-container {
+  background-color: #d7effe;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh; /* Minimum height to take up the full viewport height */
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  position: relative; 
+}
+
+.unauthorized-message {
+  font-weight: bold;
+  font-size: 50px; /* Adjust the size as needed */
+  color: #000000; /* Adjust the color as needed */
+  margin-bottom: 20px; /* Spacing between this message and the next */
+}
+
+.message{
+  font-size: 20px;
+  margin-bottom: 20px;
+  color:#000000
+
+}
+
+.unauthorized-container a {
+  color: #1a0dab; /* Typically hyperlink blue */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.unauthorized-container a:hover {
+  text-decoration: underline; /* Adds underline on hover for better UX */
+}
+
+/* End of unauthorized page */
+
+/* Start of Calender Page*/
+.calender-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #d7effe;
+  min-height: 80vh;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.calender-event {
+  position: relative;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.calender-event-textarea {
+  font-size: 18px;
+  resize: none;
+  width: 90%;
+  padding: 0.7em;
+  margin-bottom: 2em;
+  min-height: 9em;
+  border: 1px solid rgb(196, 196, 196);
+}
+
+.calender-event input {
+  font-size: 24px;
+  font-weight: 700;
+  outline: none;
+  border: 0;
+  border-bottom: 1px solid #e4dcdc;
+  margin: 0.7em;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
+
+.calender {
+  background-color: white;
+  border-radius: 25px;
+  width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.date-options {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2em;
+  align-items: center;
+  gap: 2em;
+}
+
+.calender-options {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.date-time-start-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.date-time-start-title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.date-time-start {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+.date-time-end {
+  display: flex;
+  justify-content: flex-start;
+  gap: 1em;
+}
+
+/* Modal Properties for both Calender and Logout */
+@keyframes fadeIn {
+  0% {opacity:0;}
+  100% {opacity:1;}
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30em;
+  animation: fadeIn ease 0.5s;
+}
+
+.modal-calender {
+  height: 30em;
+}
+
+.modal button {
+  width: 100%;
+  height: 40px;
+  margin-top: 29px;
+  font-size: 15px;
+  background-color: rgb(74, 183, 255);
+  border-radius: 10px;
+  border: none;
+  font-family: 'Poppins';
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
 
+.modal button:hover {
+  background-color: rgb(74, 183, 200);
+  color: white;
+}
 
+.modal button:active {
+  background-color: rgb(74, 183, 150);
+  color: white;
+}
 
+.modal-button {
+  display: flex;
+  gap: 2em;
+}
 
+.modal-button .confirm {
+  background-color:rgb(248, 76, 76);
+  color: white;
+}
 
+.eventButtons {
+  display: flex;
+  width: 60%;
+  justify-content: flex-end;
+  gap: 3px;
+}
 
+.eventButtons button {
+  height: 35px;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
 
+.eventButtons .update {
+  background-color: rgb(93, 226, 93);
+}
 
+.eventButtons .update:hover {
+  background-color: rgb(70, 170, 70);
+  color: white;
+}
 
+.eventButtons .update:active {
+  background-color: rgb(49, 119, 49);
+  color: white;
+}
 
+.eventButtons .delete {
+  background-color: rgb(248, 76, 76);
+}
 
+.eventButtons .delete:hover {
+  background-color: rgb(200, 30, 30);
+  color: white;
+}
 
+.eventButtons .delete:active {
+  background-color: rgb(131, 19, 19);
+  color: white;
+}
 
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* End of Calender Page */
+
+/* Start of Aspect Page for different screen sizes */
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+  .login-bar {
+    height: 50vh;
+  }
+  .register-bar {
+    height: 65vh;
+  }
+}
+
+/* End of Aspect Page for different screen sizes */
+
+/* Start of Finances Page */
+.payments {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.finance-option {
+  display: flex;
+  justify-content: center;
+  width: 20%;
+  text-align: center;
+  border: 1px solid #e4dcdc;
+  margin-bottom: 1em;
+}
+
+.finances {
+  background: #f4f7f6;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.finances p {
+  font-size: 18px;
+  color: #333;
+}
+
+.finances h1, .finances h2 {
+  margin: 10px 0;
+  color: #0a0a23;
+}
+
+.finances input[type="text"] {
+  width: calc(100% - 40px); /* full width minus padding */
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  box-sizing: border-box; /* include padding in the width */
+}
+
+.finances .announcement-option.submit {
+  background-color: #22a7f0;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  margin: 10px 0;
+  transition: background-color 0.3s ease;
+  border-radius: 4px;
+  width: auto;
+}
+
+.finances .announcement-option.submit:hover {
+  background-color: #19b5fe;
+}
+
+.finances form {
+  margin-top: 20px;
+}
+
+.finances ul {
+  list-style: none;
+  padding: 0;
+}
+
+.finances ul li {
+  background: #fff;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}

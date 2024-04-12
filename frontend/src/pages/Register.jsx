@@ -13,6 +13,11 @@ export default function Register() {
         role: '',
     })
 
+    const [financeData, setFinanceData] = useState({
+        unpaidDebt: 0,
+        paymentsMade: [],
+    })
+    
     const refOne = useRef(null);
     const refTwo = useRef(null);
     const refThree = useRef(null);
@@ -25,6 +30,8 @@ export default function Register() {
             const {data} = await axios.post('/register', {
                 name, email, password, role
             })
+
+
 
             if(data.error) {
                 toast.error(data.error)
