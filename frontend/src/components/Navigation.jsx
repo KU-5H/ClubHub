@@ -29,7 +29,7 @@ export default function Navigation() {
 
   return (
     <nav className='nav-bar'>
-      <h1>ClubHub</h1>
+      <h1 className='logo'>ClubHub</h1>
       <ul>
         <Link to="/home">{user && <li><MdOutlineAnnouncement /> Announcements</li>}</Link>
         <Link to="/calender">{user && <li><IoCalendarOutline /> Calender</li>}</Link>
