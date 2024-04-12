@@ -7,6 +7,8 @@ import announcement from './../assets/announcement.png';
 import calender from './../assets/calender.png';
 import finances from './../assets/finances.png';
 import userFinance from './../assets/userFinance.png';
+import business from './../assets/business.webp';
+import user2 from './../assets/user.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import {userContext} from '../../context/userContext'
@@ -18,6 +20,10 @@ export default function About() {
     if(user) {
       navigate('/home')
     }
+    window.scrollTo(0, window.innerHeight * 0.13);
+    setTimeout(() => {
+      document.getElementById('arrow').style.display = 'block';
+    }, 3000);
   })
 
   const login = () => {
@@ -30,13 +36,17 @@ export default function About() {
 
     return (
       <div className="about-section">
-        <div className="about-category-2 blue">
+        <div className='about-category-4 blue'>
           <div>
-            <h1>Clubhub</h1>
-            <p>The one and only club managment site you will ever need! </p><br />
+            <h2 className='announcement-h2'>ClubHub</h2>
+            <p>The one and only club managment site you will ever need!</p>
             <div className='about-buttons'>
               <button className='about-button' onClick={register}>Get Started</button>
             </div>
+          </div>
+          <img className='about-image2 about-category-2-right' src={user2}/>
+          <div id="arrow" className="arrow" style={{display: 'none'}}>
+            <i className="fas fa-arrow-down">↓</i>
           </div>
         </div>
         <div className="about-category">
@@ -46,7 +56,7 @@ export default function About() {
           <div className='about-images'>
               <img className='about-image' src={announcement}/>
               <img className='about-image' src={calender}/>
-              <img className='about-image' src={schedule}/>
+              <img className='about-image' src={userFinance}/>
           </div>
         </div>
         <div className="about-category blue">
@@ -68,6 +78,11 @@ export default function About() {
               <p>The Finances page lets the Treasurer and Admin add payments to Members accounts. Members
               can even see their payments and make payments straight from the app.</p>
             </div>
+        </div>
+        <div className="about-category">
+          <h2>So What Are You Waiting For?</h2>
+          <p className='announcement-p'>Get started with ClubHub today by singing up! </p>
+          <button className='about-button' onClick={register}>Get Started</button>
         </div>
       </div>
     );
