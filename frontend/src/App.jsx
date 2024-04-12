@@ -17,9 +17,11 @@ axios.defaults.withCredentials = true
 
 function App() {
 
+  const [showNavbar, setShowNavbar] = useState(true);
+
   return  (
     <UserContextProvider>
-      <Navbar />
+      {showNavbar && <Navbar />}
       <Toaster position='bottom-right' toastOptions={{duration: 2000}}/> 
       <Routes>
         <Route path='/' element={ <About />} />
@@ -27,8 +29,8 @@ function App() {
         <Route path='/finances//*' element={<Finances />} />
         <Route path='/communication' element={<Communication />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/register' element={<Register />}></Route>
-        <Route path='/login' element={<Login />}></Route>
+        <Route path='/register' element={<Register setShowNavbar={setShowNavbar}/>}></Route>
+        <Route path='/login' element={<Login setShowNavbar={setShowNavbar}/>}></Route>
       </Routes>
     </UserContextProvider>
   )
