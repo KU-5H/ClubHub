@@ -88,9 +88,14 @@ function Finances() {
     event.preventDefault();
     try {
       let amount = parseInt(paymentAmount); //payment amount is the amount the the treasurer typed in
-      await axios.post('/addFundsToAll', {amount}); //sends a request to update the funds
-      setPaymentAmount(''); //clears the input field
-      fetchData(); //fetches the data again
+      const response = await axios.post('/addFundsToAll', {amount}); //sends a request to update the funds
+      if(response.data.error) {
+        toast.error(response.data.error); //if there is an error, it will display the error message
+      } else {
+        toast.success('Updated Funds!'); //displays a success message
+        setPaymentAmount(''); //clears the input field
+        fetchData(); //fetches the data again
+      }
     } catch (error) {
       console.error('Error updating payment:', error);
     }
@@ -217,8 +222,6 @@ function Finances() {
                   <h1>Unpaid Debt</h1>
                   <div></div>
                   <h2>{userInfo && userInfo.unpaidDebt}</h2>
-                  <h1>Payments Made</h1>
-                  <h2>{showPayments()}</h2>
                 </div>
 
                 <form onSubmit={handleMemberSubmit}>
@@ -263,8 +266,6 @@ function Finances() {
           </center>
         </>
       )}
-
-      
     </div>
   );
 }

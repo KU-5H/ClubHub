@@ -195,7 +195,9 @@ const addFundsToAll = async (req, res) => {
             res.status(200).json({ message: 'Funds added to all accounts successfully' });
         } else {
             // If funds is not a valid number, send a bad request response
-            res.status(400).json({ error: 'Invalid funds amount' });
+            return res.json({
+                error: "Amount must be a number"
+            })
         }
     } catch (error) {
         // If an error occurs, log it and send a server error response
