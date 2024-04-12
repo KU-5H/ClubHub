@@ -1,38 +1,14 @@
 
 # ClubHub
-**ClubHub is a platform designed to streamline club and group management, making it easier to handle finances, payments, and communications. With ClubHub, you can effortlessly track finances, send reminders, manage members, and analyze profit margins for your group or club.**
+**ClubHub is a platform designed to streamline club and group management, making it easier to handle finances, payments, and communications. With ClubHub, you can effortlessly track finances, send reminders, and create announcements for users.**
 
-## Installation 
+## Contributors
+- [Kush (@KU-5H)](https://github.com/KU-5H) 
+- [Brandon (@branliyan)](https://github.com/branliyan)
+- [Lex (@lex-pan)](https://github.com/lex-pan)
+- [Nicholas (@Nickargiriou)](https://github.com/Nickargiriou)
+- [Jaysun (@JaysunS23)](https://github.com/JaysunS23)
 
-### If NodeJS isn't installed:
-1. Install [NodeJS](https://nodejs.org/en/download)
-
-### If Git isn't installed:
-1. Install [Git](https://git-scm.com/)
-2. I reccomend you to read some sort of git basics to understand how to use the bash terminal
-
-### Regular Installation:
-1. Clone the repo with ```git clone```
-2. Make sure to ```npm install``` both the frontend and backend folders.
-3. Create a ```.env``` file for your ```PORT``` and set it to ```5000```. We will need this later for the database.
-4. Run the frontend with ```npm run dev``` (You have to be in the frontend folder)
-5. Run the backend with ```nodemon server.js``` (You have to be in the backend folder). 
-The backend will then run on ```http://localhost:5000/```, and the frontend will run on a available port
-
-### Database Setup:
-- Since MongoDB Atlas requires permission to access the database, you won't be able to run this branch without being a member of the database.
-- Once you get the Atlas perms, add your IP address to the site
-- Connect to the Database using MongoDB Compass
-- Sync with your Device by adding a connection string to a ```.env file```, naming it ```MONGOURL```
-- Althought you've already done `npm install`, do ```npm install mongodb```
-- Install [Mongoose](https://mongoosejs.com/docs/)
-- Use Nodemon to run the server to check for problems
-
-### DotENV:
-#### You will need a .env file in the database to store some things, as highlighted earlier with the port and mongo url
-1. Add a port number with variable ```PORT``` and set it to ```5000``` as said earlier
-2. Add a ```MONGO_URL``` with your specific database url
-3. Create a variable called ```JWT_SECRET``` and set it to any number of string and characters you want
 
 ## Features [![Features](https://img.shields.io/badge/Features-green)](https://github.com/KU-5H/ClubHub?tab=readme-ov-file#Features)
 ### 1. Custom Roles:
@@ -74,7 +50,8 @@ The backend will then run on ```http://localhost:5000/```, and the frontend will
 ### Frontend
 [![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
-[![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![CSS](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 
 - Used to let the **```Coach```** / **```Treasurer```** / **```Member```**   access a visible and interactive website
 - React and Tailwind primarily make up what the user can see on the webpage
@@ -89,29 +66,32 @@ The backend will then run on ```http://localhost:5000/```, and the frontend will
 - The backend is used to make API calls and requests to the database
 - The database stores users inforation, including their login infromation (encrypted), finances and their payment track record
 
-## Installation
+## Installation [![Installation](https://img.shields.io/badge/Installation-purple)](https://github.com/KU-5H/ClubHub?tab=readme-ov-file#Installation)
 
-To run this application, you will need: 
-- [![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
-- [![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
+### Basic Essentials
+[![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)](https://git-scm.com/)
+[![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/en)
 
-1. Clone the repository using
-```
-    git clone git@github.com:KU-5H/ClubHub.git
-```
+### Starting Installation:
+[![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://react.dev/)
+[![CSS](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
+1. Clone the repo with ```git clone```
+2.  ```npm install``` both the frontend and backend folders.
+3. Run the frontend with ```npm run dev``` (You have to be in the frontend folder), which will run on ```http://localhost:5173/```, though it won't work without the backend set up.
 
-2. Install dependencies using npm.
-3. Set up the necessary environment variables.
-4. Run the server using Node.js.
-6. Access the application through your web browser.
+### For the backend:
+[![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)](https://expressjs.com/)
+1. Make a ```.env``` file in your backend. In here you will store ```PORT=5000```, your ```MONGOURL``` (more details in database setup) and ```JWT_SECRET``` which can just be a random set of characters/numbers.
+2. Run the backend with ```npm start``` (You have to be in the backend folder). 
+The backend will then run on ```http://localhost:5000/``` though you will need a database for this to work.
 
+### Database Setup:
+[![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/)
+- Since MongoDB Atlas requires permission to access the database, you won't be able to run this branch without being a member of the database. So first get permission to join the database or use your own to host. This installation assumes you either are a member of the database or will be using your own database.
+- Connect to the Database using the link provided and set it to ```MONGOURL```. Make sure you add yourself in database access in the MongoDB site
 
-## Contributors
-- [Kush (@KU-5H)](https://github.com/KU-5H) 
-- [Brandon (@branliyan)](https://github.com/branliyan)
-- [Lex (@lex-pan)](https://github.com/lex-pan)
-- [Nicholas (@Nickargiriou)](https://github.com/Nickargiriou)
-- [Jaysun (@JaysunS23)](https://github.com/JaysunS23)
+#### At this point the application will run on your local system
 
 ## License
 This project is licensed under the MIT License.
