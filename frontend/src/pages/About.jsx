@@ -85,6 +85,9 @@ const nextSectionRef = useRef();
           <p className='announcement-p'>Get started with ClubHub today by singing up! </p>
           <button className='about-button' onClick={register}>Get Started</button>
         </div>
+        <footer >
+          <div>Updated and Maintained at <a href="https://github.com/KU-5H/ClubHub" target='_blank'>ClubHub's Github</a></div>
+        </footer>
       </div>
     );
   }

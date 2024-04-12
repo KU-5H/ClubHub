@@ -7,6 +7,7 @@ import { userContext } from '../../context/userContext'
 import { Link } from 'react-router-dom';
 import mountain from './../assets/mountain.jpg'
 import { RiQuestionnaireLine } from "react-icons/ri";
+import logo from './../assets/logo.png'
 
 export default function Login({ setShowNavbar, setShowFooter }) {
     const {user, login} = useContext(userContext)
@@ -40,6 +41,7 @@ export default function Login({ setShowNavbar, setShowFooter }) {
         <div className="login-page">
             <form className="login-bar" onSubmit={handleLogin}>
                     <div className='login-navbar login-logo'>
+                        <img className='logo-icon' src={logo} alt="" />
                         <Link to='/'><li className='login-link'><RiQuestionnaireLine /> About</li></Link>
                     </div>
                     <div className='login-title'>Login</div>

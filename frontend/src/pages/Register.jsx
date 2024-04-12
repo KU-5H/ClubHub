@@ -6,6 +6,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import mountain from './../assets/mountain.jpg'
 import { RiQuestionnaireLine } from "react-icons/ri";
+import logo from './../assets/logo.png'
 
 export default function Register({ setShowNavbar, setShowFooter }) {
     const nav = useNavigate()
@@ -96,6 +97,7 @@ export default function Register({ setShowNavbar, setShowFooter }) {
         <div className='register-page'>
             <form className='register-bar' onSubmit={handleRegister}>
                 <div className='login-navbar login-logo'>
+                    <img className='logo-icon' src={logo} alt="" />
                     <Link to='/'><li className='login-link'><RiQuestionnaireLine /> About</li></Link>
                 </div>
             <div className='register-title'>Register</div>

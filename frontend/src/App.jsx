@@ -34,7 +34,6 @@ function App() {
         <Route path='/register' element={<Register setShowNavbar={setShowNavbar} setShowFooter={setShowFooter}/>}></Route>
         <Route path='/login' element={<Login setShowNavbar={setShowNavbar} setShowFooter={setShowFooter}/>}></Route>
       </Routes>
-      {showFooter && <Footer />}
     </UserContextProvider>
   )
 }
