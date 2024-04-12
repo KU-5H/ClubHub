@@ -48,7 +48,9 @@ body{
   user-select: none;
 }
 
-
+.logo-icon {
+  width: 5em;
+}
 
 .nav-bar ul {
   display: flex;
