@@ -11,6 +11,7 @@ import AdminCalender from './pages/AdminCalender'
 import axios from 'axios';
 import {Toaster} from 'react-hot-toast';
 import { UserContextProvider } from '../context/userContext';
+import Footer from './components/Footer';
 
 axios.defaults.baseURL = 'http://localhost:5000'
 axios.defaults.withCredentials = true
@@ -18,6 +19,7 @@ axios.defaults.withCredentials = true
 function App() {
 
   const [showNavbar, setShowNavbar] = useState(true);
+  const [showFooter, setShowFooter] = useState(true);
 
   return  (
     <UserContextProvider>
@@ -29,9 +31,10 @@ function App() {
         <Route path='/finances//*' element={<Finances />} />
         <Route path='/communication' element={<Communication />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/register' element={<Register setShowNavbar={setShowNavbar}/>}></Route>
-        <Route path='/login' element={<Login setShowNavbar={setShowNavbar}/>}></Route>
+        <Route path='/register' element={<Register setShowNavbar={setShowNavbar} setShowFooter={setShowFooter}/>}></Route>
+        <Route path='/login' element={<Login setShowNavbar={setShowNavbar} setShowFooter={setShowFooter}/>}></Route>
       </Routes>
+      {showFooter && <Footer />}
     </UserContextProvider>
   )
 }
