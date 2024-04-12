@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import mountain from './../assets/mountain.jpg'
 import { RiQuestionnaireLine } from "react-icons/ri";
 
-export default function Register({ setShowNavbar }) {
+export default function Register({ setShowNavbar, setShowFooter }) {
     const nav = useNavigate()
     const [data, setData] = useState({
         name: '',
@@ -22,9 +22,14 @@ export default function Register({ setShowNavbar }) {
     })
 
     useEffect(() => {
-        setShowNavbar(false)
-        return () => setShowNavbar(true)
-    }, [])
+        setShowNavbar(false);
+        setShowFooter(false);
+    
+        return () => {
+          setShowNavbar(true);
+          setShowFooter(true);
+        };
+      }, []);
     
     const refOne = useRef(null);
     const refTwo = useRef(null);

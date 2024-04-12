@@ -1,17 +1,15 @@
 // contains info about what the club is about 
 // Contains information about schedule of events coming up, location, and a way to contact, organization
 
-import location from './../assets/location.png';
-import schedule from './../assets/schedule.png';
 import announcement from './../assets/announcement.png';
 import calender from './../assets/calender.png';
 import finances from './../assets/finances.png';
 import userFinance from './../assets/userFinance.png';
-import business from './../assets/business.webp';
 import user2 from './../assets/user.png';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import {userContext} from '../../context/userContext'
+import { animateScroll as scroll } from 'react-scroll';
 
 export default function About() {
   const {user} = useContext(userContext)
@@ -23,8 +21,12 @@ export default function About() {
     window.scrollTo(0, window.innerHeight * 0.13);
     setTimeout(() => {
       document.getElementById('arrow').style.display = 'block';
+
     }, 3000);
   })
+
+  
+const nextSectionRef = useRef();
 
   const login = () => {
     navigate('/login')
@@ -45,13 +47,12 @@ export default function About() {
             </div>
           </div>
           <img className='about-image2 about-category-2-right' src={user2}/>
-          <div id="arrow" className="arrow" style={{display: 'none'}}>
+          <div id="arrow" className="arrow" style={{display: 'none'}} onClick={() => scroll.scrollTo(nextSectionRef.current.offsetTop)}>
             <i className="fas fa-arrow-down">↓</i>
           </div>
         </div>
-        <div className="about-category">
+        <div className="about-category" ref={nextSectionRef}>
           <h2>What does ClubHub Offer?</h2>
-          <br />
           <p>ClubHub is a club management site that allows you to manage all your clubs in one place. It offers a variety of features such as:</p>
           <div className='about-images'>
               <img className='about-image' src={announcement}/>

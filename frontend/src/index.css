@@ -127,6 +127,29 @@ body{
 
 /* Nav Bar Area End */
 
+/* Footer Area */
+
+footer {
+  background-color: #f8f9fa;
+  color: #212529;
+  text-align: center;
+  padding: 5px;
+  font-size: 16px;
+  width: 100%;
+}
+
+footer a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+
+/* Footer Area End */
 
 /* Home/Announcements Page */
 
@@ -386,7 +409,7 @@ body{
   align-items: flex-start;
   padding: 10em;
   flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
   
 }
 
@@ -431,7 +454,6 @@ body{
   align-items: center;
   padding: 10em;
   flex-direction: column;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .about-section p {
@@ -559,6 +581,21 @@ body{
   transform: translateX(-60%);
   font-size: 24px;
   animation: arrow-animation 1s infinite;
+  cursor: pointer;
+}
+
+@keyframes top-arrow-animation {
+  0% { transform: translateY(0); opacity: 0; }
+  50% { transform: translateY(-10px); opacity: 1; }
+  100% { transform: translateY(0); opacity: 0; }
+}
+
+#top-arrow {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 24px;
+  animation: top-arrow-animation 1s infinite;
 }
 
 
