@@ -1,6 +1,6 @@
 <br />
 <div align="center">
-  <img src="https://github.com/KU-5H/ClubHub/blob/main/frontend/src/assets/SmallLogo.png?raw=true" alt="drawing" width="100"/>
+  <img src="https://github.com/KU-5H/ClubHub/blob/main/frontend/src/assets/SmallLogo.png?raw=true" alt="drawing" width="140"/>
   <h3>ClubHub</h3>
   <p align="center">
     The one and only club managment site you will ever need
