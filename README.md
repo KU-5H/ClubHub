@@ -13,7 +13,7 @@
     ·
     <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#technologies-used-">Tech Stack</a>
     ·
-    <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#contributors">Contributers</a>
+    <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#contributors-">Contributers</a>
   </p>
 </div>
 
@@ -39,7 +39,7 @@ Additionally, you can view out demo video for the site here: [![Demo](https://im
 
 
 
-## Contributors [![Contributors](https://img.shields.io/badge/Contributors-brown)](https://github.com/KU-5H/ClubHub/blob/main/README.md#what-is-clubhub-)
+## Contributors [![Contributors](https://img.shields.io/badge/Contributors-brown)](https://github.com/KU-5H/ClubHub/blob/main/README.md#contributors-)
 - [Kush (@KU-5H)](https://github.com/KU-5H)
 - [Brandon (@branliyan)](https://github.com/branliyan) 
 - [Lex (@lex-pan)](https://github.com/lex-pan)
