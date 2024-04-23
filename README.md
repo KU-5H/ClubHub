@@ -82,7 +82,7 @@ Special thanks to [Nicholas (@Nickargiriou)](https://github.com/Nickargiriou) fo
 - [x] A visual calender where the  **```Coach```** can create events or meetups for **```Members```** 
 - [ ] The calender displays the date and location of the meetup/event, with an option for **```Members```** to opt-in for the meeting/event
 - [ ] A price associated for each event, either set by the **```Coach```** or  **```Treasurer```**. When **```Members```** opt-in, the cost of the meeting/event is automatically billed for that **```Member```**
-- [ ] The  **```Coach```** can update or delete events
+- [x] The  **```Coach```** can update or delete events
 
 ### 6. ```Communication```
 - [ ] A chat in which the **```Coach```**/**```Treasurer```**/**```Member```** can interact and talk to one another
