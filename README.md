@@ -1,5 +1,3 @@
-
-<br />
 <br />
 <div align="center">
   <img src="https://github.com/KU-5H/ClubHub/blob/main/frontend/src/assets/SmallLogo.png?raw=true" alt="drawing" width="100"/>
