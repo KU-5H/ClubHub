@@ -7,7 +7,7 @@
     <br />
     <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#demo-video-">View Demo</a>
     ·
-    <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#features-">Features</a>
+    <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#featuresroadmap-">Features</a>
     ·
     <a href="https://github.com/KU-5H/ClubHub/blob/main/README.md#installation-">Installation</a>
     ·
@@ -31,9 +31,9 @@ Clubhub also boasts some unique benefits over mix and matching services, includi
 - A full calender system so the **```Coach```** can make events or meetups for the clubs, which every member can see
 - Full fledged Register/Login system for users
 - A communication system where users can talk to one another
-- And More! Discussed in the [![Features](https://img.shields.io/badge/Features/Roadmap-green)](https://github.com/KU-5H/ClubHub/blob/main/README.md#features-) section.
+- And More! Discussed in the [![Features](https://img.shields.io/badge/Features/Roadmap-green)](https://github.com/KU-5H/ClubHub/blob/main/README.md#featuresroadmap-) section.
 
-It's important to note Clubhub is still in development, thus the site and all it's features are not yet fully implemented. You can view the progress made so far in the [![Features](https://img.shields.io/badge/Features/Roadmap-green)](https://github.com/KU-5H/ClubHub/blob/main/README.md#features-) section. 
+It's important to note Clubhub is still in development, thus the site and all it's features are not yet fully implemented. You can view the progress made so far in the [![Features](https://img.shields.io/badge/Features/Roadmap-green)](https://github.com/KU-5H/ClubHub/blob/main/README.md#featuresroadmap-) section. 
 
 Additionally, you can view out demo video for the site here: [![Demo](https://img.shields.io/badge/Demo-cyan)](https://github.com/KU-5H/ClubHub/blob/main/README.md#demo-video-)
 
@@ -53,7 +53,7 @@ https://github.com/KU-5H/ClubHub/assets/95190952/eea6217d-afa2-4c99-8823-b5e436a
 
 Special thanks to [Nicholas (@Nickargiriou)](https://github.com/Nickargiriou) for recording!
 
-## Features/Roadmap [![Features](https://img.shields.io/badge/Features/Roadmap-green)](https://github.com/KU-5H/ClubHub/blob/main/README.md#features-)
+## Features/Roadmap [![Features](https://img.shields.io/badge/Features/Roadmap-green)](https://github.com/KU-5H/ClubHub/blob/main/README.md#featuresroadmap-)
 #### This section highlights features that are meant to implemented for Clubhub Some features have not yet been implemented, hence they are not checked yet.
 
 ### 1. ```Custom Roles```
